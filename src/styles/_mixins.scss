@@ -1,0 +1,22 @@
+@import './constants';
+
+@mixin dark() {
+  :global(.darkMode) & {
+    @content;
+  }
+}
+
+// Mixin to manage breakpoints
+// @param {String} $breakpoint - Breakpoint name
+// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Print media query bases on the value
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

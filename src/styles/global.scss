@@ -1,0 +1,14 @@
+@import './mixins';
+@import './colors';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+input,
+button,
+code {
+  font-family: 'Arial';
+}
