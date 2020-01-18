@@ -1,0 +1,10 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.projectPreviewContainer {
+  padding: 0 10px;
+  width: 100vw;
+  & .projectImageContainer img {
+    width: 100%;
+  }
+}
