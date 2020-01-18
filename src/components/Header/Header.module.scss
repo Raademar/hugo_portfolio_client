@@ -1,0 +1,26 @@
+@import '../../styles/colors';
+
+.header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 16px;
+	padding: 0 16px;
+	.navMenu {
+		ul {
+			display: flex;
+			li {
+				margin-right: 32px;
+			}
+		}
+	}
+
+	.contactMenu {
+		ul {
+			display: flex;
+			li:not(:last-child) {
+				margin-right: 32px;
+			}
+		}
+	}
+}

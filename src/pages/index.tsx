@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import Header from '../components/Header/Header'
+import { Header } from '../components/Header/Header'
 
 type Props = {
   props: any
 }
 
-export default props => {
+const Index: FunctionComponent = props => {
   return (
     <>
       <Header />
@@ -13,3 +13,5 @@ export default props => {
     </>
   )
 }
+
+export default Index
