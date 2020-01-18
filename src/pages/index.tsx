@@ -9,7 +9,6 @@ const Index: FunctionComponent = props => {
   return (
     <>
       <Header />
-      <h1>Hey from gatsby</h1>
     </>
   )
 }

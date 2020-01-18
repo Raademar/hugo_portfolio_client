@@ -1,26 +1,49 @@
 @import '../../styles/colors';
+@import '../../styles/mixins';
 
 .header {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	margin-top: 16px;
-	padding: 0 16px;
-	.navMenu {
-		ul {
-			display: flex;
-			li {
-				margin-right: 32px;
-			}
-		}
-	}
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 16px;
+  padding: 0 8px;
+  z-index: 1;
+  & > div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $yellow;
+  }
+  .navMenu {
+    margin-top: 20px;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      li {
+        margin-right: 4px;
+      }
+      li:not(:last-child):after {
+        content: ',';
+      }
+    }
+  }
 
-	.contactMenu {
-		ul {
-			display: flex;
-			li:not(:last-child) {
-				margin-right: 32px;
-			}
-		}
-	}
+  .contactMenu {
+    ul {
+      display: flex;
+      li:not(:last-child) {
+        margin-right: 2px;
+      }
+      li:not(:last-child):after {
+        content: ',';
+      }
+    }
+  }
+  .listItem {
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 }
