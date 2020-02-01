@@ -7,35 +7,38 @@
   justify-content: space-between;
   flex-direction: column;
   margin: 10px 0;
-  padding: 0 8px;
+  padding: 0 14px;
   z-index: 1;
   & > div:first-of-type {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $yellow;
+  }
+  a {
+    color: $white;
+    text-decoration: none;
   }
   .navMenu {
     margin-top: 20px;
-    ul {
+    nav {
       display: flex;
       justify-content: flex-start;
-      li {
+      a {
         margin-right: 4px;
       }
-      li:not(:last-child):after {
+      a:not(:last-child):after {
         content: ',';
       }
     }
   }
 
   .contactMenu {
-    ul {
+    nav {
       display: flex;
-      li:not(:last-child) {
+      a:not(:last-child) {
         margin-right: 2px;
       }
-      li:not(:last-child):after {
+      a:not(:last-child):after {
         content: ',';
       }
     }

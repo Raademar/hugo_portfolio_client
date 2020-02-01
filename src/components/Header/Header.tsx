@@ -1,28 +1,44 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styles from './Header.module.scss'
 
 export const Header = () => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div>
         <div>
-          <h3>Hugo Carlier</h3>
+          <Link to='/'>Hugo Carlier</Link>
         </div>
-        <div className={styles.contactMenu}>
-          <ul>
-            <li className={styles.listItem}>Instagram</li>
-            <li className={styles.listItem}>Contact</li>
-          </ul>
-        </div>
+        {/* <div className={styles.contactMenu}>
+          <nav>
+            <Link
+              to='https://instagram.com/hugocarlier'
+              className={styles.listItem}
+            >
+              Instagram
+            </Link>
+            <Link to='/contact' className={styles.listItem}>
+              Contact
+            </Link>
+          </nav>
+        </div> */}
       </div>
-      <div className={styles.navMenu}>
-        <ul>
-          <li className={styles.listItem}>Narrative</li>
-          <li className={styles.listItem}>Stills</li>
-          <li className={styles.listItem}>Music Videos</li>
-          <li className={styles.listItem}>Commercials</li>
-        </ul>
-      </div>
-    </div>
+      {/* <div className={styles.navMenu}>
+        <nav>
+          <Link to='/projects/narrative' className={styles.listItem}>
+            Narrative
+          </Link>
+          <Link to='/projects/stills' className={styles.listItem}>
+            Stills
+          </Link>
+          <Link to='/projects/music-videos' className={styles.listItem}>
+            Music Videos
+          </Link>
+          <Link to='/projects/commercials' className={styles.listItem}>
+            Commercials
+          </Link>
+        </nav>
+      </div> */}
+    </header>
   )
 }

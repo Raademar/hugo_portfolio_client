@@ -1,3 +1,5 @@
+const path = require('path')
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -5,28 +7,37 @@
  */
 
 module.exports = {
-	// plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-sass']
-	plugins: [
-		{
-			resolve: 'gatsby-plugin-scss-typescript',
-			options: {
-				cssLoaderOptions: {
-					importLoaders: 1,
-					localIdentName: '[name]_[local]___[hash:base64:5]_[emoji:1]'
-				},
-				sassLoaderOptions: {
-					// includePaths: [path.resolve(__dirname, './src/*/*/module.scss')]
-				},
-				cssMinifyOptions: {
-					assetNameRegExp: /\.optimize\.css$/g,
-					canPrint: true
-				},
-				cssExtractOptions: {
-					filename: '[name].css',
-					chunkFilename: '[id].css'
-				}
-			}
-		},
-		'gatsby-plugin-typescript'
-	]
+  // plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-sass']
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-scss-typescript',
+      options: {
+        cssLoaderOptions: {
+          importLoaders: 1,
+          localIdentName: '[name]_[local]___[hash:base64:5]_[emoji:1]'
+        },
+        sassLoaderOptions: {
+          // includePaths: [path.resolve(__dirname, './src/*/*/module.scss')]
+        },
+        cssMinifyOptions: {
+          assetNameRegExp: /\.optimize\.css$/g,
+          canPrint: true
+        },
+        cssExtractOptions: {
+          filename: '[name].css',
+          chunkFilename: '[id].css'
+        }
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: path.join(__dirname, 'src', 'images')
+      }
+    },
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
+  ]
 }
