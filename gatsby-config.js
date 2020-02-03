@@ -1,4 +1,5 @@
 const path = require('path')
+require('dotenv').config()
 
 /**
  * Configure your Gatsby site with this file.
@@ -36,8 +37,19 @@ module.exports = {
         path: path.join(__dirname, 'src', 'images')
       }
     },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_READ_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
+      }
+    },
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp'
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-react-helmet'
   ]
 }

@@ -1,9 +1,9 @@
 const sanityClient = require('@sanity/client')
 const client = sanityClient({
-	projectId: 'ezow1gim',
-	dataset: 'production',
-	token: `${process.env.HUGO_PORTFOLIO_SANITY_AUTH_KEY}`,
-	useCdn: true
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  token: process.env.SANITY_TOKEN,
+  useCdn: true
 })
 
 module.exports = client
