@@ -2,51 +2,34 @@
 @import '../../styles/mixins';
 
 .header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 10px 0;
-  padding: 0 14px;
-  z-index: 1;
-  & > div:first-of-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  a {
-    color: $white;
-    text-decoration: none;
-  }
-  .navMenu {
-    margin-top: 20px;
-    nav {
-      display: flex;
-      justify-content: flex-start;
-      a {
-        margin-right: 4px;
-      }
-      a:not(:last-child):after {
-        content: ',';
-      }
-    }
-  }
-
-  .contactMenu {
-    nav {
-      display: flex;
-      a:not(:last-child) {
-        margin-right: 2px;
-      }
-      a:not(:last-child):after {
-        content: ',';
-      }
-    }
-  }
-  .listItem {
-    font-weight: bold;
-    font-size: 10px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	margin: 10px 0;
+	padding: 0 25px;
+	z-index: 1;
+	& > div:first-of-type {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	a {
+		color: $white;
+		text-decoration: none;
+	}
+	.navMenu {
+		nav {
+			display: flex;
+			a:not(:last-child) {
+				margin-right: 54px;
+			}
+		}
+	}
+	.listItem {
+		// font-weight: bold;
+		font-size: 16px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
 }

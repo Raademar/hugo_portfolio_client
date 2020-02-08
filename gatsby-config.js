@@ -8,48 +8,50 @@ require('dotenv').config()
  */
 
 module.exports = {
-  // plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-sass']
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-scss-typescript',
-      options: {
-        cssLoaderOptions: {
-          importLoaders: 1,
-          localIdentName: '[name]_[local]___[hash:base64:5]_[emoji:1]'
-        },
-        sassLoaderOptions: {
-          // includePaths: [path.resolve(__dirname, './src/*/*/module.scss')]
-        },
-        cssMinifyOptions: {
-          assetNameRegExp: /\.optimize\.css$/g,
-          canPrint: true
-        },
-        cssExtractOptions: {
-          filename: '[name].css',
-          chunkFilename: '[id].css'
-        }
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: path.join(__dirname, 'src', 'images')
-      }
-    },
-    {
-      resolve: 'gatsby-source-sanity',
-      options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        token: process.env.SANITY_READ_TOKEN,
-        watchMode: false,
-        overlayDrafts: true
-      }
-    },
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet'
-  ]
+	siteMetadata: {
+		title: 'Hugo Carlier'
+	},
+	plugins: [
+		{
+			resolve: 'gatsby-plugin-scss-typescript',
+			options: {
+				cssLoaderOptions: {
+					importLoaders: 1,
+					localIdentName: '[name]_[local]___[hash:base64:5]_[emoji:1]'
+				},
+				sassLoaderOptions: {
+					// includePaths: [path.resolve(__dirname, './src/*/*/module.scss')]
+				},
+				cssMinifyOptions: {
+					assetNameRegExp: /\.optimize\.css$/g,
+					canPrint: true
+				},
+				cssExtractOptions: {
+					filename: '[name].css',
+					chunkFilename: '[id].css'
+				}
+			}
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'images',
+				path: path.join(__dirname, 'src', 'images')
+			}
+		},
+		{
+			resolve: 'gatsby-source-sanity',
+			options: {
+				projectId: process.env.SANITY_PROJECT_ID,
+				dataset: process.env.SANITY_DATASET,
+				token: process.env.SANITY_READ_TOKEN,
+				watchMode: false,
+				overlayDrafts: true
+			}
+		},
+		'gatsby-plugin-typescript',
+		'gatsby-plugin-sharp',
+		'gatsby-transformer-sharp',
+		'gatsby-plugin-react-helmet'
+	]
 }

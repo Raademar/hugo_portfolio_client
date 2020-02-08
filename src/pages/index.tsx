@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react'
-import { Header } from '../components/Header/Header'
+import { Layout } from '../components/Layout/Layout'
 import { Banner } from '../components/Banner/Banner'
 
 type Props = {
-  props: any
+	props: any
 }
 
 const Index: FunctionComponent = props => {
-  return (
-    <>
-      <Header />
-      <Banner />
-    </>
-  )
+	return (
+		<>
+			<Layout>
+				<Banner />
+			</Layout>
+		</>
+	)
 }
 
 export default Index
