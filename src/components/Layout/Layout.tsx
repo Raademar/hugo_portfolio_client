@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Helmet from 'react-helmet'
 import { Header } from '../Header/Header'
+import styles from './Layout.module.scss'
 
 export const Layout = ({ children }: any) => (
 	<StaticQuery
@@ -22,7 +23,7 @@ export const Layout = ({ children }: any) => (
 			}
 		`}
 		render={data => (
-			<React.Fragment>
+			<div className={styles.wrapper}>
 				<Helmet
 					title={'Hugo Carlier'}
 					meta={[
@@ -35,7 +36,7 @@ export const Layout = ({ children }: any) => (
 					siteTitle={data.site.siteMetadata.title}
 				/>
 				<>{children}</>
-			</React.Fragment>
+			</div>
 		)}
 	/>
 )

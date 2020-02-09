@@ -1,6 +1,33 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link as GatsbyLink, graphql } from 'gatsby'
 import styles from './Header.module.scss'
+
+const Link = ({
+	children,
+	to,
+	activeClassName,
+	partiallyActive,
+	...other
+}: any) => {
+	const internal = /^\/(?!\/)/.test(to)
+	if (internal) {
+		return (
+			<GatsbyLink
+				to={to}
+				activeClassName={activeClassName}
+				partiallyActive={partiallyActive}
+				{...other}
+			>
+				{children}
+			</GatsbyLink>
+		)
+	}
+	return (
+		<a href={to} {...other}>
+			{children}
+		</a>
+	)
+}
 
 export const Header = ({ menuItems, siteTitle }: any) => {
 	console.log(menuItems, siteTitle)
