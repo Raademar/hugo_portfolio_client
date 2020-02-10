@@ -1,0 +1,14 @@
+@import '../styles/colors';
+@import '../styles/mixins';
+
+.projectImageContainer {
+	width: auto;
+	height: 780px;
+}
+.title {
+	display: flex;
+	margin-bottom: 10px;
+}
+.projectDescription {
+	display: flex;
+}

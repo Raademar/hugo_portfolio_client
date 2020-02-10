@@ -34,6 +34,7 @@ export const ProjectsContainer = () => {
 				data.allSanityProject.nodes.map((project: any, index: number) => {
 					return (
 						<ProjectPreview
+							key={index}
 							featuredProject={project.featuredProject}
 							left={index % 2 === 0 && !project.featuredProject}
 							right={index % 2 === 1 && !project.featuredProject}

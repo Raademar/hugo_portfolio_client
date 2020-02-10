@@ -42,8 +42,11 @@ export const Header = ({ menuItems, siteTitle }: any) => {
 					<nav>
 						{menuItems &&
 							menuItems.nodes.map(
-								(item: { url: string; title: string; id: string }) => (
-									<Link to={item.url} className={styles.listItem}>
+								(
+									item: { url: string; title: string; id: string },
+									index: number
+								) => (
+									<Link to={item.url} className={styles.listItem} key={index}>
 										{item.title}
 									</Link>
 								)

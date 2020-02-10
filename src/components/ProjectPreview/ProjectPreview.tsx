@@ -20,7 +20,7 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
 			className={`${featuredProject ? styles.projectPreviewContainerFull : ''}`}
 		>
 			<div className={styles.projectImageContainer}>
-				<Link to={`project/${url}`}>
+				<Link to={url}>
 					<Img fluid={image} alt={title} />
 				</Link>
 			</div>
