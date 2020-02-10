@@ -3,17 +3,11 @@
 
 .projectPreviewContainerFull {
 	grid-column: 1/3;
+	padding-left: 0;
+	padding-right: 0;
 	& .projectImageContainer img {
 		width: 100%;
 	}
-}
-
-.projectPreviewContainerHalfFirst {
-	padding-right: 10px;
-}
-
-.projectPreviewContainerHalfSecond {
-	padding-left: 10px;
 }
 .linkContainer {
 	color: $white;

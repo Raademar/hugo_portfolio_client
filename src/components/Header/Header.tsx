@@ -40,13 +40,14 @@ export const Header = ({ menuItems, siteTitle }: any) => {
 				</div>
 				<div className={styles.navMenu}>
 					<nav>
-						{menuItems.nodes.map(
-							(item: { url: string; title: string; id: string }) => (
-								<Link to={item.url} className={styles.listItem}>
-									{item.title}
-								</Link>
-							)
-						)}
+						{menuItems &&
+							menuItems.nodes.map(
+								(item: { url: string; title: string; id: string }) => (
+									<Link to={item.url} className={styles.listItem}>
+										{item.title}
+									</Link>
+								)
+							)}
 					</nav>
 				</div>
 			</div>
