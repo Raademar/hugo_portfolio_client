@@ -10,14 +10,18 @@ type Props = {
 	url: string
 	left?: boolean
 	right?: boolean
+	gridRow: number
 }
 
 export const ProjectPreview: FunctionComponent<Props> = props => {
-	const { featuredProject, image, title, url, left, right } = props
+	const { featuredProject, image, title, url, left, right, gridRow } = props
 
 	return (
 		<article
-			className={`${featuredProject ? styles.projectPreviewContainerFull : ''}`}
+			className={`${
+				featuredProject ? styles.projectPreviewContainerFull : ''
+			} styles.projectPreviewContainer`}
+			// style={{ order: gridRow }}
 		>
 			<div className={styles.projectImageContainer}>
 				<Link to={url}>

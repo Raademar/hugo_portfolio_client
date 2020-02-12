@@ -1,14 +1,19 @@
 @import '../../styles/colors';
 @import '../../styles/mixins';
 
+.projectPreviewContainer {
+	width: 50%;
+}
 .projectPreviewContainerFull {
 	grid-column: 1/3;
 	padding-left: 0;
 	padding-right: 0;
+	// width: 100%;
 	& .projectImageContainer img {
 		width: 100%;
 	}
 }
+
 .linkContainer {
 	color: $white;
 }
