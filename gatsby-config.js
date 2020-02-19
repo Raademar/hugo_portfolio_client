@@ -49,8 +49,8 @@ module.exports = {
 				overlayDrafts: true
 			}
 		},
-		'gatsby-plugin-typescript',
 		'gatsby-plugin-sharp',
+		'gatsby-plugin-typescript',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-react-helmet'
 	]
