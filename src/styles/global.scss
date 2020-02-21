@@ -1,5 +1,6 @@
 @import './mixins';
 @import './colors';
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
 
 * {
 	box-sizing: border-box;
@@ -34,4 +35,23 @@ h3 {
 	font-size: 10px;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
+}
+
+.image-gallery-custom-left-nav {
+	height: 100px;
+	background-color: hotpink;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+	height: 40px;
+}
+.image-gallery-slide .image-gallery-image {
+	object-fit: cover;
+}
+.image-gallery-icon {
+	filter: none;
+	&:hover {
+		color: $black;
+	}
 }
