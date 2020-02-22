@@ -44,7 +44,7 @@ export const Header = ({ menuItems, siteTitle }: any) => {
         return item
       }
     })
-  removed.map((item: any) => categories.push(item))
+  removed && removed.map((item: any) => categories.push(item))
   return (
     <header className={styles.header}>
       <div>
