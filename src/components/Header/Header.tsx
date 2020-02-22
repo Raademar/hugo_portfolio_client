@@ -30,16 +30,20 @@ const Link = ({
 }
 
 export const Header = ({ menuItems, siteTitle }: any) => {
-  const categories = menuItems.nodes.filter((item: any) => {
-    if (item.title !== 'Instagram' && item.title !== 'Contact') {
-      return item
-    }
-  })
-  const removed = menuItems.nodes.filter((item: any) => {
-    if (item.title === 'Instagram' || item.title === 'Contact') {
-      return item
-    }
-  })
+  const categories =
+    menuItems &&
+    menuItems.nodes.filter((item: any) => {
+      if (item.title !== 'Instagram' && item.title !== 'Contact') {
+        return item
+      }
+    })
+  const removed =
+    menuItems &&
+    menuItems.nodes.filter((item: any) => {
+      if (item.title === 'Instagram' || item.title === 'Contact') {
+        return item
+      }
+    })
   removed.map((item: any) => categories.push(item))
   return (
     <header className={styles.header}>
@@ -59,16 +63,23 @@ export const Header = ({ menuItems, siteTitle }: any) => {
                     categoryLink: boolean
                   },
                   index: number
-                ) => (
-                  <Link
-                    to={`/${item.url}`}
-                    className={styles.listItem}
-                    key={index}
-                    state={item.categoryLink ? item.title : null}
-                  >
-                    {item.title}
-                  </Link>
-                )
+                ) => {
+                  return item.url ===
+                    'https://www.instagram.com/igotvisions/' ? (
+                    <a className={styles.listItem} href={item.url}>
+                      {item.title}
+                    </a>
+                  ) : (
+                    <Link
+                      to={`/${item.url}`}
+                      className={styles.listItem}
+                      key={index}
+                      state={item.categoryLink ? item.title : null}
+                    >
+                      {item.title}
+                    </Link>
+                  )
+                }
               )}
           </nav>
         </div>
