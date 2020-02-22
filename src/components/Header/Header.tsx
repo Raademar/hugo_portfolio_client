@@ -30,6 +30,17 @@ const Link = ({
 }
 
 export const Header = ({ menuItems, siteTitle }: any) => {
+  const categories = menuItems.nodes.filter((item: any) => {
+    if (item.title !== 'Instagram' && item.title !== 'Contact') {
+      return item
+    }
+  })
+  const removed = menuItems.nodes.filter((item: any) => {
+    if (item.title === 'Instagram' || item.title === 'Contact') {
+      return item
+    }
+  })
+  removed.map((item: any) => categories.push(item))
   return (
     <header className={styles.header}>
       <div>
@@ -38,29 +49,27 @@ export const Header = ({ menuItems, siteTitle }: any) => {
         </div>
         <div className={styles.navMenu}>
           <nav>
-            {menuItems &&
-              menuItems.nodes
-                .reverse()
-                .map(
-                  (
-                    item: {
-                      url: string
-                      title: string
-                      id: string
-                      categoryLink: boolean
-                    },
-                    index: number
-                  ) => (
-                    <Link
-                      to={item.url}
-                      className={styles.listItem}
-                      key={index}
-                      state={item.categoryLink ? item.title : null}
-                    >
-                      {item.title}
-                    </Link>
-                  )
-                )}
+            {categories &&
+              categories.map(
+                (
+                  item: {
+                    url: string
+                    title: string
+                    id: string
+                    categoryLink: boolean
+                  },
+                  index: number
+                ) => (
+                  <Link
+                    to={`/${item.url}`}
+                    className={styles.listItem}
+                    key={index}
+                    state={item.categoryLink ? item.title : null}
+                  >
+                    {item.title}
+                  </Link>
+                )
+              )}
           </nav>
         </div>
       </div>
@@ -69,13 +78,13 @@ export const Header = ({ menuItems, siteTitle }: any) => {
 }
 
 export const query = graphql`
-  query {
+  {
     allSanityMenuItem {
       nodes {
+        categoryLink
         title
         url
         id
-        categoryLink
       }
     }
   }
