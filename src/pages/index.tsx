@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { graphql } from 'gatsby'
 import { Layout } from '../components/Layout/Layout'
 import { Banner } from '../components/Banner/Banner'
 import { TextBox } from '../components/TextBox/TextBox'
@@ -8,12 +9,33 @@ type Props = {
 	props: any
 }
 
-const Index: FunctionComponent<Props> = props => {
+export const query = graphql`
+	{
+		sanityStartPageText {
+			introText {
+				children {
+					text
+				}
+			}
+			body {
+				children {
+					text
+				}
+			}
+		}
+	}
+`
+
+const Index: FunctionComponent<Props> = ({ data }: any) => {
+	const { introText, body } = data.sanityStartPageText
+
 	return (
 		<>
 			<Layout>
 				<Banner />
-				<TextBox />
+				<TextBox
+					texts={[introText[0].children[0].text, body[0].children[0].text]}
+				/>
 				<ProjectsContainer />
 			</Layout>
 		</>
