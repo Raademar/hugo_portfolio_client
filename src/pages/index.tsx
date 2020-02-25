@@ -12,29 +12,24 @@ type Props = {
 export const query = graphql`
 	{
 		sanityStartPageText {
-			introText {
-				children {
-					text
-				}
-			}
-			body {
-				children {
-					text
-				}
-			}
+			_rawBody
+			_rawIntroText
 		}
 	}
 `
 
 const Index: FunctionComponent<Props> = ({ data }: any) => {
-	const { introText, body } = data.sanityStartPageText
+	const { _rawIntroText, _rawBody } = data.sanityStartPageText
 
 	return (
 		<>
 			<Layout>
 				<Banner />
 				<TextBox
-					texts={[introText[0].children[0].text, body[0].children[0].text]}
+					texts={[
+						_rawIntroText[0].children[0].text,
+						_rawBody[0].children[0].text
+					]}
 				/>
 				<ProjectsContainer />
 			</Layout>

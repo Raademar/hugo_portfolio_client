@@ -10,9 +10,9 @@
 	// padding: 0 25px;
 	z-index: 1;
 	& > div:first-of-type {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px;
 	}
 	a {
 		color: $white;
@@ -21,12 +21,19 @@
 	.navMenu {
 		nav {
 			display: flex;
-			a:not(:last-child) {
-				margin-right: 54px;
+			justify-content: space-between;
+			a {
+				white-space: pre;
 			}
 		}
 	}
 	.listItem {
+		@include respond-to('medium') {
+			font-size: 14px;
+		}
+		@include respond-to('small') {
+			font-size: 12px;
+		}
 		font-size: 16px;
 		font-weight: 400;
 		letter-spacing: 0.03em;

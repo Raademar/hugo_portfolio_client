@@ -9,6 +9,10 @@ export const query = graphql`
 	query($slug: String) {
 		sanityProject(slug: { current: { eq: $slug } }) {
 			_rawDescription
+			director
+			cinematographer
+			producer
+			publishedAt
 			categories {
 				title
 			}
@@ -16,7 +20,7 @@ export const query = graphql`
 			id
 			image {
 				asset {
-					fluid {
+					fluid(maxWidth: 1080) {
 						...GatsbySanityImageFluid
 					}
 				}
@@ -29,6 +33,19 @@ export const query = graphql`
 				}
 			}
 		}
+		allSanityStills(
+			filter: { belongsTo: { elemMatch: { slug: { current: { eq: $slug } } } } }
+		) {
+			nodes {
+				image {
+					asset {
+						fluid(maxWidth: 1080) {
+							...GatsbySanityImageFluid
+						}
+					}
+				}
+			}
+		}
 	}
 `
 
@@ -37,23 +54,46 @@ const project = ({ data }: any) => {
 		image,
 		title,
 		_rawDescription,
+		director,
+		cinematographer,
+		producer,
 		categories,
+		publishedAt,
 		vimeoSrc
 	} = data.sanityProject
-	console.log(data.sanityProject)
+
+	const timeStamp = `( 0${new Date(publishedAt).getMonth() + 1} / ${new Date(
+		publishedAt
+	).getFullYear()} )`
+	console.log(data)
 
 	return (
 		<Layout>
-			<div className={styles.projectImageContainer}>
-				{vimeoSrc ? (
-					<Video videoSrcURL={vimeoSrc} />
-				) : (
-					<Img fluid={image.asset.fluid} alt={title} />
-				)}
-			</div>
-			<div className={styles.title}>{title}</div>
-			<div className={styles.projectDescription}>
-				{_rawDescription[0].children[0].text}
+			<div className={styles.projectContainer}>
+				<div className={styles.projectImageContainer}>
+					{vimeoSrc ? (
+						<Video videoSrcURL={vimeoSrc} />
+					) : (
+						<Img fluid={image.asset.fluid} alt={title} />
+					)}
+				</div>
+				<div className={styles.title}>
+					<p>{title}</p>
+					<p>{timeStamp}</p>
+				</div>
+				<div className={styles.projectDescription}>
+					{_rawDescription[0].children[0].text}
+					<p>Directed by: {director}</p>
+					<p>Cinematography by: {cinematographer}</p>
+					<p>Produced by: {producer}</p>
+				</div>
+				<div className={styles.projectStills}>
+					{data.allSanityStills.nodes.map((item: any, index: number) => (
+						<div className={styles.projectStillsImageContainer}>
+							<Img fluid={item.image.asset.fluid} alt={item.id} />
+						</div>
+					))}
+				</div>
 			</div>
 		</Layout>
 	)

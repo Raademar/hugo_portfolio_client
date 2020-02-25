@@ -1,15 +1,35 @@
 @import '../styles/colors';
 @import '../styles/mixins';
 
+.projectContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 20px;
+}
+
 .projectImageContainer {
 	width: auto;
 	// height: 780px;
 	margin-bottom: 24px;
+	grid-column: 1/3;
 }
 .title {
 	display: flex;
-	margin-bottom: 10px;
+	justify-content: space-between;
+	line-height: 25px;
+	& p {
+		margin: 0;
+	}
 }
 .projectDescription {
-	display: flex;
+	grid-column: 2 / 3;
+	line-height: 25px;
+	margin-bottom: 60px;
+}
+
+.projectStills {
+	grid-column: 2 / 3;
+	& .projectStillsImageContainer {
+		margin-bottom: 30px;
+	}
 }

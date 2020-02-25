@@ -3,9 +3,9 @@
 
 .projectPreviewContainer {
 	// width: 50%;
-	& .projectImageContainer picture img {
-		// width: 100%;
-		height: 388px;
+	& .projectImageContainer img {
+		width: 100%;
+		// height: 388px;
 	}
 }
 .projectPreviewContainerFull {

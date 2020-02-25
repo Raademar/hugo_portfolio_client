@@ -18,8 +18,10 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
 
 	return (
 		<article
-			className={`${featuredProject ? styles.projectPreviewContainerFull : ''}${
-				styles.projectPreviewContainer
+			className={`${
+				featuredProject
+					? styles.projectPreviewContainerFull
+					: styles.projectPreviewContainer
 			}`}
 		>
 			<div className={styles.projectImageContainer}>
