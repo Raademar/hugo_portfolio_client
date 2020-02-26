@@ -1,19 +1,4 @@
-// export function array_move(arr: any[], old_index: number, new_index: number) {
-// 	while (old_index < 0) {
-// 		old_index += arr.length
-// 	}
-// 	while (new_index < 0) {
-// 		new_index += arr.length
-// 	}
-// 	if (new_index >= arr.length) {
-// 		var k = new_index - arr.length + 1
-// 		while (k--) {
-// 			arr.push(undefined)
-// 		}
-// 	}
-// 	arr.splice(new_index, 0, arr.splice(old_index, 1)[0])
-// 	return arr // for testing purposes
-// }
+import { useState, useEffect } from 'react'
 
 export function move(array: any[], from: number, to: number) {
 	if (to === from) return array
@@ -82,4 +67,26 @@ export function zip(falsyArr: any[], truthyArr: any[]) {
 		}
 	}
 	return zippedValues
+}
+
+export function useWindowSize() {
+	const isClient = typeof window === 'object'
+	function getSize() {
+		return {
+			width: isClient ? window.innerWidth : 0,
+			height: isClient ? window.innerHeight : 0
+		}
+	}
+	const [windowSize, setWindowSize] = useState(getSize)
+	useEffect((): any => {
+		if (!isClient) {
+			return false
+		}
+		function handleResize() {
+			setWindowSize(getSize())
+		}
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
+	}, []) // Empty array ensures that effect is only run on mount and unmount
+	return windowSize
 }

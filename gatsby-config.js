@@ -50,6 +50,7 @@ module.exports = {
 			}
 		},
 		'gatsby-plugin-sharp',
+		'gatsby-source-sanity-transform-images',
 		'gatsby-plugin-typescript',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-react-helmet'

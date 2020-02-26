@@ -39,3 +39,31 @@
 		letter-spacing: 0.03em;
 	}
 }
+
+.burgerButton {
+	grid-column: 3/3;
+	display: flex;
+	flex-direction: column;
+	// justify-content: space-around;
+	width: 100%;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 10;
+	transition: all 0.3s linear;
+
+	&:focus {
+		outline: none;
+	}
+
+	div {
+		width: 1.7rem;
+		height: 1px;
+		background: $white;
+		border-radius: 10px;
+		transition: all 0.3s linear;
+		position: relative;
+		transform-origin: 1px;
+	}
+}

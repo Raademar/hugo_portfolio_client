@@ -20,7 +20,7 @@ export const query = graphql`
 			id
 			image {
 				asset {
-					fluid(maxWidth: 1080) {
+					fluid {
 						...GatsbySanityImageFluid
 					}
 				}
@@ -39,7 +39,7 @@ export const query = graphql`
 			nodes {
 				image {
 					asset {
-						fluid(maxWidth: 1080) {
+						fluid {
 							...GatsbySanityImageFluid
 						}
 					}
@@ -82,7 +82,7 @@ const project = ({ data }: any) => {
 					<p>{timeStamp}</p>
 				</div>
 				<div className={styles.projectDescription}>
-					{_rawDescription[0].children[0].text}
+					<p>{_rawDescription[0].children[0].text}</p>
 					<p>Directed by: {director}</p>
 					<p>Cinematography by: {cinematographer}</p>
 					<p>Produced by: {producer}</p>

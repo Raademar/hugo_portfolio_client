@@ -30,6 +30,7 @@
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-source-filesystem": "^2.1.47",
     "gatsby-source-sanity": "^5.0.5",
+    "gatsby-source-sanity-transform-images": "0.0.4",
     "gatsby-transformer-sharp": "^2.3.13",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",

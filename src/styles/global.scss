@@ -40,6 +40,19 @@ h3 {
 	letter-spacing: 0.03em;
 	margin: 12px 0 4px 0;
 }
+p {
+	@include respond-to('medium') {
+		font-size: 20px;
+		line-height: 24px;
+	}
+	@include respond-to('small') {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	font-size: 24px;
+	line-height: 30px;
+	margin-top: 0;
+}
 
 .image-gallery-custom-left-nav {
 	height: 100px;

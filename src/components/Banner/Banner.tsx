@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import ImageGallery from 'react-image-gallery'
 import styles from './Banner.module.scss'
+import { useWindowSize } from '../../helpers/helpers'
 
 type Props = {
 	history?: any
@@ -35,17 +36,17 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			}
 		})
 
+	const size = useWindowSize()
+	const IS_MOBILE = size && size.width < 767
+
 	return (
 		<div className={styles.container}>
-			{/* <div className={styles.imageContainer}>
-						<Img fluid={project.image.asset.fluid} />
-					</div> */}
 			<ImageGallery
 				items={bannerProjects}
 				showThumbnails={false}
 				showFullscreenButton={false}
 				showPlayButton={false}
-				// renderLeftNav={renderLeftNav}
+				showNav={!IS_MOBILE}
 				onClick={(e: any) => console.log(e.target)}
 				// getCurrentIndex
 			/>
