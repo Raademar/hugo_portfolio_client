@@ -37,6 +37,7 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-image-gallery": "^1.0.6",
+    "react-player": "^1.15.2",
     "style-loader": "^1.1.1",
     "typescript": "^3.7.2"
   },

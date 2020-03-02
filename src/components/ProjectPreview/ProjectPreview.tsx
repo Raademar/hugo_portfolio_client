@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import React, { FunctionComponent, useState, useRef } from 'react'
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import ReactPlayer from 'react-player'
 import Img from 'gatsby-image'
 import styles from './ProjectPreview.module.scss'
 
@@ -15,6 +16,9 @@ type Props = {
 
 export const ProjectPreview: FunctionComponent<Props> = props => {
 	const { featuredProject, image, title, url, left, right, gridRow } = props
+	const [isHovered, setIsHovered] = useState(false)
+	const [isPlaying, setIsPlaying] = useState(false)
+	const imageRef = useRef(null)
 
 	return (
 		<article
@@ -24,9 +28,33 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
 					: styles.projectPreviewContainer
 			}`}
 		>
-			<div className={styles.projectImageContainer}>
+			<div
+				className={styles.projectImageContainer}
+				onMouseEnter={() => {
+					setIsHovered(true)
+					setIsPlaying(true)
+				}}
+				onMouseLeave={() => {
+					setIsPlaying(false)
+					setIsHovered(false)
+				}}
+			>
 				<Link to={url}>
-					<Img fluid={image} alt={title} />
+					{isHovered ? (
+						<div className={styles.playerWrapper}>
+							<ReactPlayer
+								url='https://vimeo.com/310379413'
+								className={styles.reactPlayer}
+								playing={isPlaying}
+								controls={false}
+								width='100%'
+								height='100%'
+								wrapper='div'
+							/>
+						</div>
+					) : (
+						<Img fluid={image} alt={title} ref={imageRef} />
+					)}
 				</Link>
 			</div>
 			<div className={styles.linkContainer}>

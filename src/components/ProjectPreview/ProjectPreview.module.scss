@@ -8,6 +8,7 @@
 	// width: 50%;
 	& .projectImageContainer img {
 		width: 100%;
+		z-index: 299999999;
 		// height: 388px;
 	}
 }
@@ -23,4 +24,16 @@
 
 .linkContainer {
 	color: $white;
+}
+
+.playerWrapper {
+	position: relative;
+	padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.reactPlayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
