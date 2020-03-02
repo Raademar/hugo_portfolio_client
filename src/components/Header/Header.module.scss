@@ -43,7 +43,7 @@
 	grid-column: 3/3;
 	display: flex;
 	flex-direction: column;
-	// justify-content: space-around;
+	justify-content: center;
 	width: 100%;
 	background: transparent;
 	border: none;
@@ -61,7 +61,7 @@
 		height: 1px;
 		background: $white;
 		border-radius: 10px;
-		transition: all 0.3s $easeOutCirc;
+		transition: all 0.3s $easeInOutCirc;
 		position: relative;
 		transform-origin: 1px;
 	}
