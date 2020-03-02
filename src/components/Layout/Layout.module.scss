@@ -1,0 +1,9 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.wrapper {
+	@include respond-to('medium') {
+		padding: 0 16px;
+	}
+	padding: 0 24px;
+}

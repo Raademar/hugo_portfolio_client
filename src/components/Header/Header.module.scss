@@ -1,26 +1,68 @@
 @import '../../styles/colors';
+@import '../../styles/mixins';
 
 .header {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin-top: 16px;
-	padding: 0 16px;
+	flex-direction: column;
+	margin: 10px 0;
+	z-index: 2;
+	& > div:first-of-type {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px;
+	}
+	a {
+		color: $white;
+		text-decoration: none;
+	}
 	.navMenu {
-		ul {
+		nav {
 			display: flex;
-			li {
-				margin-right: 32px;
+			justify-content: space-between;
+			a {
+				white-space: pre;
 			}
 		}
 	}
-
-	.contactMenu {
-		ul {
-			display: flex;
-			li:not(:last-child) {
-				margin-right: 32px;
-			}
+	.listItem {
+		@include respond-to('medium') {
+			font-size: 14px;
 		}
+		@include respond-to('small') {
+			font-size: 12px;
+		}
+		font-size: 16px;
+		font-weight: 400;
+		letter-spacing: 0.03em;
+	}
+}
+
+.burgerButton {
+	grid-column: 3/3;
+	display: flex;
+	flex-direction: column;
+	// justify-content: space-around;
+	width: 100%;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 10;
+	// transition: all 0.3s $easeInQuad;
+
+	&:focus {
+		outline: none;
+	}
+
+	div {
+		width: 1.7rem;
+		height: 1px;
+		background: $white;
+		border-radius: 10px;
+		transition: all 0.3s $easeOutCirc;
+		position: relative;
+		transform-origin: 1px;
 	}
 }

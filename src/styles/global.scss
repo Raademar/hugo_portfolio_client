@@ -1,7 +1,13 @@
+@import './mixins';
 @import './colors';
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
 
 * {
 	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 html,
@@ -9,16 +15,60 @@ body,
 input,
 button,
 code {
-	font-family: 'Arial';
+	font-family: 'Helvetica';
 }
 
 body {
 	margin: 0;
 	padding: 0;
+	background: $black;
+	color: $white;
 }
 
 ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	li {
+		cursor: pointer;
+	}
+}
+
+h3 {
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.03em;
+	margin: 12px 0 4px 0;
+}
+p {
+	@include respond-to('medium') {
+		font-size: 20px;
+		line-height: 24px;
+	}
+	@include respond-to('small') {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	font-size: 24px;
+	line-height: 30px;
+	margin-top: 0;
+}
+
+.image-gallery-custom-left-nav {
+	height: 100px;
+	background-color: hotpink;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+	height: 40px;
+}
+.image-gallery-slide .image-gallery-image {
+	object-fit: cover;
+}
+.image-gallery-icon {
+	filter: none;
+	&:hover {
+		color: $black;
+	}
 }

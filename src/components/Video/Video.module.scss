@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.video {
+	--video--width: 1392;
+	--video--height: 781;
+
+	position: relative;
+	padding-bottom: calc(
+		var(--video--height) / var(--video--width) * 100%
+	); /* 41.66666667% */
+	overflow: hidden;
+	max-width: 100%;
+	background: black;
+}
+
+.video iframe,
+.video object,
+.video embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

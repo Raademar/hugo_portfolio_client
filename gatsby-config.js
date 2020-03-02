@@ -1,3 +1,6 @@
+const path = require('path')
+require('dotenv').config()
+
 /**
  * Configure your Gatsby site with this file.
  *
@@ -5,7 +8,9 @@
  */
 
 module.exports = {
-	// plugins: ['gatsby-plugin-typescript', 'gatsby-plugin-sass']
+	siteMetadata: {
+		title: 'Hugo Carlier'
+	},
 	plugins: [
 		{
 			resolve: 'gatsby-plugin-scss-typescript',
@@ -27,6 +32,27 @@ module.exports = {
 				}
 			}
 		},
-		'gatsby-plugin-typescript'
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'images',
+				path: path.join(__dirname, 'src', 'images')
+			}
+		},
+		{
+			resolve: 'gatsby-source-sanity',
+			options: {
+				projectId: process.env.SANITY_PROJECT_ID,
+				dataset: process.env.SANITY_DATASET,
+				token: process.env.SANITY_READ_TOKEN,
+				watchMode: true,
+				overlayDrafts: true
+			}
+		},
+		'gatsby-plugin-sharp',
+		'gatsby-source-sanity-transform-images',
+		'gatsby-plugin-typescript',
+		'gatsby-transformer-sharp',
+		'gatsby-plugin-react-helmet'
 	]
 }

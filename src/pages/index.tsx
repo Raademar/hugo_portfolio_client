@@ -1,15 +1,38 @@
 import React, { FunctionComponent } from 'react'
-import { Header } from '../components/Header/Header'
+import { graphql } from 'gatsby'
+import { Layout } from '../components/Layout/Layout'
+import { Banner } from '../components/Banner/Banner'
+import { TextBox } from '../components/TextBox/TextBox'
+import { ProjectsContainer } from '../components/ProjectsContainer/ProjectsContainer'
 
 type Props = {
 	props: any
 }
 
-const Index: FunctionComponent = props => {
+export const query = graphql`
+	{
+		sanityStartPageText {
+			_rawBody
+			_rawIntroText
+		}
+	}
+`
+
+const Index: FunctionComponent<Props> = ({ data }: any) => {
+	const { _rawIntroText, _rawBody } = data.sanityStartPageText
+
 	return (
 		<>
-			<Header />
-			<h1>Hey from gatsby</h1>
+			<Layout>
+				<Banner />
+				<TextBox
+					texts={[
+						_rawIntroText[0].children[0].text,
+						_rawBody[0].children[0].text
+					]}
+				/>
+				<ProjectsContainer />
+			</Layout>
 		</>
 	)
 }
