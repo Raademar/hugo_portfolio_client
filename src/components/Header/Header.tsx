@@ -65,10 +65,15 @@ export const Header = ({
 					<button className={styles.burgerButton} onClick={setIsMenuOpen}>
 						<div
 							style={{
-								transform: isMenuOpen ? 'translateY(1px)' : 'translateY(7px)'
+								transform: isMenuOpen ? 'translateY(1px)' : 'translateY(-4px)'
 							}}
 						/>
 						<div />
+						<div
+							style={{
+								transform: isMenuOpen ? 'translateY(-1px)' : 'translateY(4px)'
+							}}
+						/>
 					</button>
 				) : (
 					<div className={styles.navMenu}>
