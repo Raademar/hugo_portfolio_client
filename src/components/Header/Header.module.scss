@@ -19,6 +19,8 @@
 	}
 	.navMenu {
 		nav {
+			display: flex;
+			justify-content: space-between;
 			a {
 				white-space: pre;
 			}

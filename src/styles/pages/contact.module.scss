@@ -1,0 +1,11 @@
+@import '../colors';
+@import '../mixins';
+
+.contactContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 32px;
+	& section {
+		grid-column: 2 / 3;
+	}
+}
