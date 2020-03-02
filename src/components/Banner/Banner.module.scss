@@ -1,28 +1,21 @@
 @import '../../styles/colors';
 @import '../../styles/mixins';
-// @import '~react-image-gallery/styles/scss/image-gallery.scss';
 
 .container {
-  // width: 100vw;
-  height: 100%;
-  // overflow: hidden;
-
-  // .innerContainer {
-  // 	// display: inline-block;
-  // 	white-space: nowrap;
-  // }
-  .image-gallery-left-nav .image-gallery-svg,
-  .image-gallery-right-nav .image-gallery-svg {
-    height: 40px;
-  }
-  .originalClass {
-    height: 40px;
-  }
-  .imageContainer {
-    display: inline-block;
-    height: 100%;
-    width: 93vw;
-  }
-
-  // transform: translate3d(-100vw, 0, 0);
+	height: 100%;
+	.image-gallery-left-nav .image-gallery-svg,
+	.image-gallery-right-nav .image-gallery-svg {
+		height: 40px;
+	}
+	.originalClass {
+		height: 40px;
+	}
+	.imageContainer {
+		display: inline-block;
+		height: 100%;
+		width: 93vw;
+	}
+	&:hover {
+		cursor: pointer;
+	}
 }

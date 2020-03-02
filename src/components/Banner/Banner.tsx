@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import React, { FunctionComponent, useRef, useEffect } from 'react'
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import ImageGallery from 'react-image-gallery'
 import styles from './Banner.module.scss'
@@ -15,6 +15,9 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			allSanityProject {
 				nodes {
 					featuredProject
+					slug {
+						current
+					}
 					image {
 						asset {
 							fluid(maxWidth: 1600) {
@@ -26,6 +29,7 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			}
 		}
 	`)
+	const imageRef = useRef(null)
 	const bannerProjects = data.allSanityProject.nodes
 		.filter((node: any) => node.featuredProject)
 		.map((item: any, index: number) => {
@@ -35,6 +39,11 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 				index
 			}
 		})
+
+	const navigateToImageUrl = (index: number) => {
+		const url: string = bannerProjects[index].url
+		navigate(url)
+	}
 
 	const size = useWindowSize()
 	const IS_MOBILE = size && size.width < 767
@@ -47,7 +56,11 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 				showFullscreenButton={false}
 				showPlayButton={false}
 				showNav={!IS_MOBILE}
-				onClick={(e: any) => console.log(e.target)}
+				onClick={(e: any) =>
+					// @ts-ignore
+					navigateToImageUrl(imageRef.current.state.currentIndex)
+				}
+				ref={imageRef}
 				// getCurrentIndex
 			/>
 		</div>

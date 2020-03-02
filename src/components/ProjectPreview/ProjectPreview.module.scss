@@ -2,6 +2,9 @@
 @import '../../styles/mixins';
 
 .projectPreviewContainer {
+	@include respond-to('medium') {
+		grid-column: 1/3;
+	}
 	// width: 50%;
 	& .projectImageContainer img {
 		width: 100%;

@@ -7,8 +7,7 @@
 	justify-content: space-between;
 	flex-direction: column;
 	margin: 10px 0;
-	// padding: 0 25px;
-	z-index: 1;
+	z-index: 2;
 	& > div:first-of-type {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -20,8 +19,6 @@
 	}
 	.navMenu {
 		nav {
-			display: flex;
-			justify-content: space-between;
 			a {
 				white-space: pre;
 			}
@@ -51,7 +48,7 @@
 	cursor: pointer;
 	padding: 0;
 	z-index: 10;
-	transition: all 0.3s linear;
+	// transition: all 0.3s $easeInQuad;
 
 	&:focus {
 		outline: none;
@@ -62,7 +59,7 @@
 		height: 1px;
 		background: $white;
 		border-radius: 10px;
-		transition: all 0.3s linear;
+		transition: all 0.3s $easeOutCirc;
 		position: relative;
 		transform-origin: 1px;
 	}

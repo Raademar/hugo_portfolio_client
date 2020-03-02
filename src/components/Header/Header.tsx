@@ -62,12 +62,12 @@ export const Header = ({
 					<Link to='/'>Hugo Carlier</Link>
 				</div>
 				{IS_MOBILE ? (
-					<button
-						className={styles.burgerButton}
-						style={{ justifyContent: isMenuOpen ? 'center' : 'space-around' }}
-						onClick={setIsMenuOpen}
-					>
-						<div />
+					<button className={styles.burgerButton} onClick={setIsMenuOpen}>
+						<div
+							style={{
+								transform: isMenuOpen ? 'translateY(1px)' : 'translateY(7px)'
+							}}
+						/>
 						<div />
 					</button>
 				) : (
