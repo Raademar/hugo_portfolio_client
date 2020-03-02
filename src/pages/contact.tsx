@@ -11,11 +11,7 @@ type Props = {
 export const query = graphql`
 	{
 		sanityContactPage {
-			contactText {
-				children {
-					text
-				}
-			}
+			_rawContactText
 			email
 			phone
 		}
@@ -23,13 +19,16 @@ export const query = graphql`
 `
 
 const Contact: FunctionComponent<Props> = ({ data }: any) => {
-	const { contactText, email, phone } = data.sanityContactPage
+	const { _rawContactText, email, phone } = data.sanityContactPage
+	console.log(_rawContactText)
 
 	return (
 		<>
 			<Layout>
 				<div className={styles.contactContainer}>
-					<TextBox texts={[contactText[0].children[0].text, email, phone]} />
+					<TextBox
+						texts={[_rawContactText[0].children[0].text, email, phone]}
+					/>
 				</div>
 			</Layout>
 		</>
