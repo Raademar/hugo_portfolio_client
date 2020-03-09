@@ -30,8 +30,11 @@ export const Layout = ({ children }: any) => {
 					<Helmet
 						title={'Hugo Carlier'}
 						meta={[
-							{ name: 'description', content: 'Sample' },
-							{ name: 'keywords', content: 'sample, something' }
+							{
+								name: 'description',
+								content: 'Film Director (BANDITS FR) and Cinematographer.'
+							},
+							{ name: 'keywords', content: 'Film Director, Cinematographer' }
 						]}
 					></Helmet>
 					<Header
