@@ -1,0 +1,1 @@
+export const stillsContainer: string;
