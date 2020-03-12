@@ -5,3 +5,4 @@ declare module '*.scss' {
 
 declare module 'react-awesome-slider'
 declare module 'react-awesome-slider/src/styles'
+declare module 'feather-icons'

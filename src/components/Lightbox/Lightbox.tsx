@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Lightbox.module.scss'
-
+import { ChevronRight, ChevronLeft } from 'react-feather'
 type Props = {
 	images: { source: string; index: number }[]
 	onClose: () => void
@@ -17,6 +17,15 @@ export const Lightbox = ({ images, onClose, startImage }: Props) => {
 		}
 		setActiveImage(images[activeImage.index + 1])
 	}
+
+	const cycleToPreviousImage = () => {
+		if (activeImage.index === 0) {
+			setActiveImage(images[images.length - 1])
+			return
+		}
+		setActiveImage(images[activeImage.index - 1])
+	}
+
 	return (
 		<div className={styles.lightboxContainer}>
 			<div className={styles.lightboxContainerInner}>
@@ -24,7 +33,10 @@ export const Lightbox = ({ images, onClose, startImage }: Props) => {
 					CLOSE
 				</span>
 				<span className={styles.nextImage} onClick={cycleToNextImage}>
-					NEXT
+					<ChevronRight />
+				</span>
+				<span className={styles.previousImage} onClick={cycleToPreviousImage}>
+					<ChevronLeft />
 				</span>
 				<img src={activeImage.source} />
 			</div>
