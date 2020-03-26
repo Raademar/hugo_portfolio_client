@@ -28,11 +28,6 @@ export const query = graphql`
       title
       vimeoSrc
       vimeoSrcPlayer
-      postVideo {
-        asset {
-          playbackId
-        }
-      }
     }
     allSanityStills(
       filter: { belongsTo: { elemMatch: { slug: { current: { eq: $slug } } } } }
