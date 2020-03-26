@@ -9,7 +9,7 @@
 	height: 100vh;
 	width: 100%;
 	text-align: left;
-	padding: 2rem;
+	padding: 16px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -19,8 +19,31 @@
 	nav {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
+		margin-bottom: 240px;
+		margin-top: 30px;
+		height: 100%;
+		width: 100%;
+		// border-top: 1px solid $white;
+
+		& .categoryLinks {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			width: 100%;
+			border-top: 1px solid $white;
+		}
+
+		& .socialLinks {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			border-top: 1px solid $white;
+		}
 	}
 
 	.listItem {
@@ -29,11 +52,18 @@
 		}
 		@include respond-to('small') {
 			font-size: 20px;
+			padding: 15px 0;
+			border-bottom: 1px solid $white;
+			width: 100%;
 		}
 		text-decoration: none;
 		color: $white;
 		font-size: 16px;
 		font-weight: 400;
 		letter-spacing: 0.03em;
+	}
+
+	.centerListItem {
+		text-align: center;
 	}
 }

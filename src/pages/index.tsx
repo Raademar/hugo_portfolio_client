@@ -23,8 +23,8 @@ const Index: FunctionComponent<Props> = ({ data }: any) => {
 
 	return (
 		<>
+			<Banner />
 			<Layout>
-				<Banner />
 				<TextBox
 					texts={[
 						_rawIntroText[0].children[0].text,

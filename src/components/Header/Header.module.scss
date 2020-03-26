@@ -8,6 +8,10 @@
 	flex-direction: column;
 	margin: 10px 0;
 	z-index: 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0 24px;
 	& > div:first-of-type {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

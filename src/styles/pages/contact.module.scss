@@ -4,7 +4,8 @@
 .contactContainer {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	margin-top: 32px;
+	margin-top: 40px;
+	grid-gap: 20px;
 	& section {
 		@include respond-to('medium') {
 			grid-column: 1 / 3;

@@ -1,0 +1,55 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+@import '../../styles/constants';
+
+.lightboxContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	min-width: 100vw;
+	min-height: 100vh;
+	z-index: 20;
+
+	& .lightboxContainerInner {
+		width: 100%;
+		height: 100%;
+		@include respond-to('medium') {
+			padding: 16px;
+		}
+		padding: 96px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		& img {
+			transition: all 0.3s $easeOutCirc;
+		}
+	}
+}
+
+.close {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	font-size: 24px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.nextImage {
+	position: absolute;
+	top: 50%;
+	right: 40px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.previousImage {
+	position: absolute;
+	top: 50%;
+	left: 40px;
+	cursor: pointer;
+	user-select: none;
+}

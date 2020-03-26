@@ -50,36 +50,35 @@ export const Menu = ({ menuItems, isMenuOpen }: any) => {
 				return item
 			}
 		})
-	const removed =
+	const socialLinks =
 		menuItems &&
 		menuItems.nodes.filter((item: any) => {
 			if (item.title === 'Instagram' || item.title === 'Contact') {
 				return item
 			}
 		})
-	removed && removed.map((item: any) => categories.push(item))
+
+	// Add this line to merge the social links with the categories link.
+	// socialLinks && socialLinks.map((item: any) => categories.push(item))
+
 	return (
 		<div
 			className={styles.navMenu}
 			style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)' }}
 		>
 			<nav>
-				{categories &&
-					categories.map(
-						(
-							item: {
-								url: string
-								title: string
-								id: string
-								categoryLink: boolean
-							},
-							index: number
-						) => {
-							return item.url === 'https://www.instagram.com/igotvisions/' ? (
-								<a className={styles.listItem} href={item.url}>
-									{item.title}
-								</a>
-							) : (
+				<div className={styles.categoryLinks}>
+					{categories &&
+						categories.map(
+							(
+								item: {
+									url: string
+									title: string
+									id: string
+									categoryLink: boolean
+								},
+								index: number
+							) => (
 								<Link
 									to={`/${item.url}`}
 									className={styles.listItem}
@@ -89,8 +88,30 @@ export const Menu = ({ menuItems, isMenuOpen }: any) => {
 									{item.title}
 								</Link>
 							)
-						}
-					)}
+						)}
+				</div>
+				<div className={styles.socialLinks}>
+					{socialLinks &&
+						socialLinks.map((item: any, index: number) => {
+							return item.url === 'https://www.instagram.com/igotvisions/' ? (
+								<a
+									className={`${styles.listItem} ${styles.centerListItem}`}
+									href={item.url}
+								>
+									{item.title}
+								</a>
+							) : (
+								<Link
+									to={`/${item.url}`}
+									className={`${styles.listItem} ${styles.centerListItem}`}
+									key={index}
+									state={item.categoryLink ? item.title : null}
+								>
+									{item.title}
+								</Link>
+							)
+						})}
+				</div>
 			</nav>
 		</div>
 	)

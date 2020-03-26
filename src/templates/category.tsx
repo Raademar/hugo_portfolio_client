@@ -20,6 +20,7 @@ export const data = graphql`
           current
         }
         title
+        vimeoSrc
         image {
           asset {
             fluid {
@@ -52,6 +53,7 @@ const category: FunctionComponent<Props> = ({ data }: any) => {
               image={project.image.asset.fluid}
               title={project.title}
               url={project.slug.current}
+              vimeoSrc={project.vimeoSrc}
             />
           ))}
         </div>

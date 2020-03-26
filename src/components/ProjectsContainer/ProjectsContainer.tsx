@@ -16,6 +16,7 @@ export const ProjectsContainer = (props: any) => {
           }
           featuredProject
           _rawDescription
+          vimeoSrc
           image {
             asset {
               fluid(maxWidth: 1200) {
@@ -55,6 +56,7 @@ export const ProjectsContainer = (props: any) => {
               title={project.title}
               url={project.slug.current}
               gridRow={index + 1}
+              vimeoSrc={project.vimeoSrc}
               // description={project._rawDescription[0].children[0].text}
             />
           )
