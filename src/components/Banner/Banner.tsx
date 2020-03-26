@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useEffect, useState } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import ImageGallery from 'react-image-gallery'
@@ -30,10 +30,7 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			}
 		}
 	`)
-	const [cords, setCords] = useState({ x: 0, y: 0 })
 	const imageRef = useRef(null)
-	let down: any
-	let timeTaken = 0
 	const bannerProjects = data.allSanityProject.nodes
 		.filter((node: any) => node.featuredProject)
 		.map((item: any, index: number) => {
@@ -44,27 +41,28 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			}
 		})
 
-	const navigateToImageUrl = (e: any, index: number) => {
-		// setCords({ x: e.screenX, y: e.screenY })
-		e.stopPropogation()
-		console.log(e.screenX, e.screenY)
-		const url: string = bannerProjects[index].url
-		navigate(url)
-	}
+	// const navigateToImageUrl = (e: React.MouseEvent, index: number) => {
+	// 	setCords({ x: e.screenX, y: e.screenY })
+	// 	e.stopPropagation()
+	// 	console.log(e.screenX, e.screenY)
+	// 	const url: string = bannerProjects[index].url
+	// 	navigate(url)
+	// }
 
-	const mousePress = () => {
-		console.log('down')
+	// const mousePress = (e: React.MouseEvent) => {
+	// 	e.stopPropagation()
+	// 	console.log('down')
 
-		down = Date.now()
-	}
+	// 	down = Date.now()
+	// }
 
-	const mouseReleased = (index: number) => {
-		console.log('up')
+	// const mouseReleased = (index: number) => {
+	// 	console.log('up')
 
-		timeTaken = Date.now() - down
-		console.log(timeTaken)
-		// navigateToImageUrl(index)
-	}
+	// 	timeTaken = Date.now() - down
+	// 	console.log(timeTaken)
+	// 	navigateToImageUrl(index)
+	// }
 
 	const size = useWindowSize()
 	const IS_MOBILE = size && size.width < 767
@@ -80,19 +78,6 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 
 	return (
 		<div className={styles.container}>
-			{/* <ImageGallery
-				items={bannerProjects}
-				showThumbnails={false}
-				showFullscreenButton={false}
-				showPlayButton={false}
-				showNav={!IS_MOBILE}
-				onClick={(e: any) =>
-					// @ts-ignore
-					navigateToImageUrl(imageRef.current.state.currentIndex)
-				}
-				ref={imageRef}
-				// getCurrentIndex
-			/> */}
 			<Flickity
 				className={'carousel'}
 				elementType={'div'}
@@ -101,13 +86,9 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
 			>
 				{bannerProjects.map((image: any, index: number) => {
 					return (
-						<img
-							src={image.original}
-							// onMouseDown={() => console.log('down')}
-							// onMouseUp={() => mouseReleased(index)}
-							key={index}
-							onClick={e => navigateToImageUrl(e, index)}
-						/>
+						<Link to={bannerProjects[index].url}>
+							<img src={image.original} key={index} />
+						</Link>
 					)
 				})}
 			</Flickity>
