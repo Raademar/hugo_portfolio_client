@@ -79,9 +79,8 @@ const project = ({ data }: any) => {
           <p>{timeStamp}</p>
         </div>
         <div className={styles.projectDescription}>
-          <p>{_rawDescription[0].children[0].text}</p>
+          <p>{_rawDescription && _rawDescription[0].children[0].text}</p>
           <p>Directed by: {director}</p>
-          <p>Cinematography by: {cinematographer}</p>
           <p>Produced by: {producer}</p>
         </div>
         <div className={styles.projectStills}>
