@@ -28,7 +28,7 @@ export const ProjectsContainer = (props: any) => {
       }
     }
   `)
-  console.log(data.allSanityProject.nodes)
+  // console.log(data.allSanityProject.nodes)
 
   let falsyValues = []
   let truthyValues = []
@@ -49,14 +49,14 @@ export const ProjectsContainer = (props: any) => {
           return (
             <ProjectPreview
               key={index}
-              featuredProject={project.featuredProject}
-              left={index % 2 === 0 && !project.featuredProject}
-              right={index % 2 === 1 && !project.featuredProject}
-              image={project.image.asset.fluid}
-              title={project.title}
-              url={project.slug.current}
+              featuredProject={project?.featuredProject}
+              left={index % 2 === 0 && !project?.featuredProject}
+              right={index % 2 === 1 && !project?.featuredProject}
+              image={project?.image.asset.fluid}
+              title={project?.title}
+              url={project?.slug.current}
               gridRow={index + 1}
-              vimeoSrc={project.vimeoSrc}
+              vimeoSrc={project?.vimeoSrc}
               // description={project._rawDescription[0].children[0].text}
             />
           )

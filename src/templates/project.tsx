@@ -59,10 +59,8 @@ const project = ({ data }: any) => {
     vimeoSrcPlayer
   } = data.sanityProject
 
-  const timeStamp = `( 0${new Date(publishedAt).getMonth() + 1} / ${new Date(
-    publishedAt
-  ).getFullYear()} )`
-  console.log(data)
+  const timeStamp = `( 0${new Date(publishedAt || Date.now()).getMonth() +
+    1} / ${new Date(publishedAt || Date.now()).getFullYear()} )`
 
   return (
     <Layout>
