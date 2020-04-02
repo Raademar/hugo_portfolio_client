@@ -52,7 +52,7 @@ export const ProjectsContainer = (props: any) => {
               featuredProject={project?.featuredProject}
               left={index % 2 === 0 && !project?.featuredProject}
               right={index % 2 === 1 && !project?.featuredProject}
-              image={project?.image.asset.fluid}
+              image={project?.image && project.image.asset.fluid}
               title={project?.title}
               url={project?.slug.current}
               gridRow={index + 1}
