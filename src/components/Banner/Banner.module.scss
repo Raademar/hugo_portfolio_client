@@ -2,21 +2,25 @@
 @import '../../styles/mixins';
 
 .container {
-	height: 100%;
-	margin-top: 40px;
-	.image-gallery-left-nav .image-gallery-svg,
-	.image-gallery-right-nav .image-gallery-svg {
-		height: 40px;
-	}
-	.originalClass {
-		height: 40px;
-	}
-	.imageContainer {
-		display: inline-block;
-		height: 100%;
-		width: 93vw;
-	}
-	&:hover {
-		cursor: pointer;
-	}
+  height: 100%;
+  margin-top: 40px;
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 40px;
+  }
+  .originalClass {
+    height: 40px;
+  }
+  .imageContainer {
+    display: inline-block;
+    height: 100%;
+    width: 93vw;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.sliderImage {
+  // max-height: 700px;
 }
