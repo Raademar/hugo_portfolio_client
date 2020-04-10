@@ -2,38 +2,39 @@
 @import '../../styles/mixins';
 
 .projectPreviewContainer {
-	@include respond-to('medium') {
-		grid-column: 1/3;
-	}
-	// width: 50%;
-	& .projectImageContainer img {
-		width: 100%;
-		z-index: 299999999;
-		// height: 388px;
-	}
+  @include respond-to('medium') {
+    grid-column: 1/3;
+  }
+  // width: 50%;
+  & .projectImageContainer img {
+    width: 100%;
+    z-index: 299;
+    // height: 388px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
 }
 .projectPreviewContainerFull {
-	grid-column: 1/3;
-	padding-left: 0;
-	padding-right: 0;
-	// width: 100%;
-	& .projectImageContainer {
-		width: 100%;
-	}
+  grid-column: 1/3;
+  padding-left: 0;
+  padding-right: 0;
+  // width: 100%;
+  & .projectImageContainer {
+    width: 100%;
+  }
 }
 
 .linkContainer {
-	color: $white;
+  color: $white;
 }
 
 .playerWrapper {
-	position: relative;
-	padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
 }
 
 .reactPlayer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

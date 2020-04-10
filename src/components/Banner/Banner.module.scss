@@ -14,7 +14,7 @@
   .imageContainer {
     display: inline-block;
     height: 100%;
-    width: 93vw;
+    width: calc(100vw - 48px);
   }
   &:hover {
     cursor: pointer;

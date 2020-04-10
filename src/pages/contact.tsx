@@ -5,34 +5,44 @@ import { TextBox } from '../components/TextBox/TextBox'
 import styles from '../styles/pages/contact.module.scss'
 
 type Props = {
-	props: any
+  props: any
 }
 
 export const query = graphql`
-	{
-		sanityContactPage {
-			_rawContactText
-			email
-			phone
-		}
-	}
+  {
+    sanityContactPage {
+      _rawContactText
+      email
+      phone
+    }
+  }
 `
 
 const Contact: FunctionComponent<Props> = ({ data }: any) => {
-	const { _rawContactText, email, phone } = data.sanityContactPage
-	console.log(_rawContactText)
+  const { _rawContactText, email, phone } = data.sanityContactPage
+  console.log(_rawContactText)
 
-	return (
-		<>
-			<Layout>
-				<div className={styles.contactContainer}>
-					<TextBox
-						texts={[_rawContactText[0].children[0].text, email, phone]}
-					/>
-				</div>
-			</Layout>
-		</>
-	)
+  return (
+    <>
+      <Layout>
+        <div className={styles.contactContainer}>
+          <TextBox texts={[_rawContactText[0].children[0].text]} />
+          <section className={styles.contactInfoContainer}>
+            <div className={styles.emailPhoneInsta}>
+              <p>{email}</p>
+              <p>{phone}</p>
+              <a href='https://instagram.com/igotvisions' target='_blank'>
+                Instagram
+              </a>
+            </div>
+            <div className={styles.devLinks}>
+              <p>Made by Mattias & Benjamin</p>
+            </div>
+          </section>
+        </div>
+      </Layout>
+    </>
+  )
 }
 
 export default Contact

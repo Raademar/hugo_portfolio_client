@@ -87,7 +87,9 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
         {bannerProjects.map((image: any, index: number) => {
           return (
             <Link to={bannerProjects[index].url}>
-              <img src={image.original} key={index} />
+              <div className='crop-height'>
+                <img src={image.original} key={index} />
+              </div>
             </Link>
           )
         })}
