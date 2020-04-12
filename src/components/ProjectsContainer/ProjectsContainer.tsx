@@ -28,7 +28,6 @@ export const ProjectsContainer = (props: any) => {
       }
     }
   `)
-  // console.log(data.allSanityProject.nodes)
 
   let falsyValues = []
   let truthyValues = []
@@ -40,7 +39,11 @@ export const ProjectsContainer = (props: any) => {
     }
   }
 
-  const sortedArr = zip(falsyValues, truthyValues)
+  const sortedArr = zip(falsyValues.reverse(), truthyValues).filter(
+    (item: any) => item !== undefined
+  )
+
+  console.log(sortedArr)
 
   return (
     <section className={styles.container}>

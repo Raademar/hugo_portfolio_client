@@ -34,7 +34,8 @@ export const Header = ({
   menuItems,
   siteTitle,
   setIsMenuOpen,
-  isMenuOpen
+  isMenuOpen,
+  style
 }: any) => {
   const categories =
     menuItems &&
@@ -56,7 +57,7 @@ export const Header = ({
   const IS_MOBILE = size && size.width < 767
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} style={style}>
       <div>
         <div>
           <Link to='/'>Hugo Carlier</Link>

@@ -58,6 +58,7 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
               className={styles.reactPlayer}
               playing={isPlaying && isLoaded}
               controls={false}
+              loop={true}
               width='100%'
               height='100%'
               onReady={() => {
