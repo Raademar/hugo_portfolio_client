@@ -12,7 +12,6 @@ export const Layout = ({ children }: any) => {
   const currentScrollY = window.scrollY
 
   useEffect(() => {
-    console.log(window.scrollY)
     if (currentScrollY > lastScrollY) {
       setSlide('-48px')
     } else {
