@@ -19,20 +19,9 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
   }, [isLoaded])
   const data = useStaticQuery(graphql`
     query {
-      allSanityProject {
-        nodes {
-          featuredProject
-          slug {
-            current
-          }
-          image {
-            asset {
-              fluid(maxWidth: 1600) {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
-        }
+      sanityBannerVideo {
+        title
+        vimeoURL
       }
     }
   `)
@@ -57,15 +46,18 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
   //   cellAlign: 'center'
   //   // adaptiveHeight: true,
   // }
+  const { title, vimeoURL } = data.sanityBannerVideo
+
+  console.log(title, vimeoURL)
 
   return (
     <div className={styles.container}>
       <div className={styles.playerWrapper}>
         <div className={styles.bannerProjectText}>
-          <h1>Dua Lipa - Future Nostalgia album teaser</h1>
+          <h1>{title}</h1>
         </div>
         <ReactPlayer
-          url='https://vimeo.com/402944168'
+          url={vimeoURL}
           className={styles.reactPlayer}
           playing={isPlaying && isLoaded}
           controls={false}
