@@ -5,6 +5,7 @@ import { Layout } from '../components/Layout/Layout'
 import { Video } from '../components/Video/Video'
 import ReactPlayer from 'react-player'
 import styles from './Project.module.scss'
+import 'array-flat-polyfill'
 
 export const query = graphql`
   query($slug: String) {
