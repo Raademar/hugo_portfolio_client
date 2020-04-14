@@ -50,7 +50,7 @@ const category: FunctionComponent<Props> = ({ data }: any) => {
             <ProjectPreview
               key={index}
               featuredProject={false}
-              image={project?.image?.asset.fluid}
+              image={project.image && project.image.asset.fluid}
               title={project?.title}
               url={project?.slug.current}
               vimeoSrc={project?.vimeoSrc}
