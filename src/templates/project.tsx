@@ -70,11 +70,8 @@ const project = ({ data }: any) => {
     categories,
     publishedAt,
     vimeoSrc,
-    vimeoSrcPlayer,
+    vimeoSrcPlayer
   } = data.sanityProject
-
-  console.log(data.sanityProject)
-  console.log(data.allSanityProject)
 
   const relatedProjects = data.allSanityProject.nodes
     .map((project: any) =>
@@ -86,9 +83,9 @@ const project = ({ data }: any) => {
     )
     .flat()
     .filter((item: any) => item != undefined)
-    .slice(1, 5)
 
-  console.log(relatedProjects)
+  const shuffled = relatedProjects.sort(() => 0.5 - Math.random())
+  const randomSelectedRelatedProjects = shuffled.slice(0, 4)
 
   const timeStamp = `( 0${new Date(publishedAt || Date.now()).getMonth() +
     1} / ${new Date(publishedAt || Date.now()).getFullYear()} )`
@@ -119,7 +116,7 @@ const project = ({ data }: any) => {
           ))}
         </div>
         <div className={styles.relatedProjectsContainer}>
-          {relatedProjects.map((project: any) => (
+          {randomSelectedRelatedProjects.map((project: any) => (
             <div>
               <Link to={project.slug.current}>
                 <div className={styles.playerWrapper}>
