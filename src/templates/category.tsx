@@ -46,7 +46,7 @@ const category: FunctionComponent<Props> = ({ data }: any) => {
     <>
       <Layout>
         <div className={styles.projectGrid}>
-          {projects.map((project: any, index: number) => (
+          {projects.reverse().map((project: any, index: number) => (
             <ProjectPreview
               key={index}
               featuredProject={false}

@@ -2,11 +2,15 @@
 @import '../mixins';
 
 .stillsContainer {
-	display: grid;
-	margin-top: 40px;
-	@include respond-to('medium') {
-		grid-template-columns: 1fr 1fr;
-	}
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-gap: 20px;
+  display: grid;
+  margin-top: 40px;
+  @include respond-to('medium') {
+    grid-template-columns: 1fr 1fr;
+  }
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+
+  & div:hover {
+    cursor: pointer;
+  }
 }

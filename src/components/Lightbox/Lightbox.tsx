@@ -1,45 +1,81 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './Lightbox.module.scss'
 import { ChevronRight, ChevronLeft } from 'react-feather'
+import { useOutsideClick } from '../../helpers/helpers'
+
 type Props = {
-	images: { source: string; index: number }[]
-	onClose: () => void
-	startImage: any
+  images: { source: string; index: number }[]
+  onClose: () => void
+  startImage: any
+  clickOutsideImage: () => void
 }
 
-export const Lightbox = ({ images, onClose, startImage }: Props) => {
-	const [activeImage, setActiveImage] = useState(images[startImage])
+export const Lightbox = ({
+  images,
+  onClose,
+  startImage,
+  clickOutsideImage
+}: Props) => {
+  const [activeImage, setActiveImage] = useState(images[startImage])
+  const [currentKeyDown, setCurrentKeyDown] = useState(0)
 
-	const cycleToNextImage = () => {
-		if (activeImage.index + 1 === images.length) {
-			setActiveImage(images[0])
-			return
-		}
-		setActiveImage(images[activeImage.index + 1])
-	}
+  // TODO: After a couple of presses the site starts lagging.
+  // document.addEventListener('keydown', (e: any) => handleKeyDown(e))
 
-	const cycleToPreviousImage = () => {
-		if (activeImage.index === 0) {
-			setActiveImage(images[images.length - 1])
-			return
-		}
-		setActiveImage(images[activeImage.index - 1])
-	}
+  const cycleToNextImage = () => {
+    if (activeImage.index + 1 === images.length) {
+      setActiveImage(images[0])
+      return
+    }
+    setActiveImage(images[activeImage.index + 1])
+  }
 
-	return (
-		<div className={styles.lightboxContainer}>
-			<div className={styles.lightboxContainerInner}>
-				<span className={styles.close} onClick={onClose}>
-					CLOSE
-				</span>
-				<span className={styles.nextImage} onClick={cycleToNextImage}>
-					<ChevronRight />
-				</span>
-				<span className={styles.previousImage} onClick={cycleToPreviousImage}>
-					<ChevronLeft />
-				</span>
-				<img src={activeImage.source} />
-			</div>
-		</div>
-	)
+  const cycleToPreviousImage = () => {
+    if (activeImage.index === 0) {
+      setActiveImage(images[images.length - 1])
+      return
+    }
+    setActiveImage(images[activeImage.index - 1])
+  }
+
+  const handleKeyDown = (e: any) => {
+    // setCurrentKeyDown(e.keyCode)
+    if (e.keyCode === 37) {
+      cycleToPreviousImage()
+    } else if (e.keyCode === 39) {
+      cycleToNextImage()
+    } else {
+      return
+    }
+  }
+
+  const image = useRef(null)
+  const nextImage = useRef(null)
+  const previousImage = useRef(null)
+  useOutsideClick([image, nextImage, previousImage], () => clickOutsideImage())
+
+  return (
+    <div className={styles.lightboxContainer}>
+      <div className={styles.lightboxContainerInner}>
+        <span className={styles.close} onClick={onClose}>
+          CLOSE
+        </span>
+        <span
+          className={styles.nextImage}
+          ref={nextImage}
+          onClick={cycleToNextImage}
+        >
+          <ChevronRight />
+        </span>
+        <span
+          className={styles.previousImage}
+          onClick={cycleToPreviousImage}
+          ref={previousImage}
+        >
+          <ChevronLeft />
+        </span>
+        <img src={activeImage.source} ref={image} />
+      </div>
+    </div>
+  )
 }

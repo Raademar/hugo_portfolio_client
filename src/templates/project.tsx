@@ -1,8 +1,9 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { Layout } from '../components/Layout/Layout'
 import { Video } from '../components/Video/Video'
+import ReactPlayer from 'react-player'
 import styles from './Project.module.scss'
 
 export const query = graphql`
@@ -42,6 +43,19 @@ export const query = graphql`
         }
       }
     }
+    allSanityProject {
+      nodes {
+        vimeoSrc
+        vimeoSrcPlayer
+        title
+        categories {
+          title
+        }
+        slug {
+          current
+        }
+      }
+    }
   }
 `
 
@@ -56,8 +70,25 @@ const project = ({ data }: any) => {
     categories,
     publishedAt,
     vimeoSrc,
-    vimeoSrcPlayer
+    vimeoSrcPlayer,
   } = data.sanityProject
+
+  console.log(data.sanityProject)
+  console.log(data.allSanityProject)
+
+  const relatedProjects = data.allSanityProject.nodes
+    .map((project: any) =>
+      project.categories.map((projectCategory: any) => {
+        if (projectCategory.title === categories[0].title) {
+          return project
+        }
+      })
+    )
+    .flat()
+    .filter((item: any) => item != undefined)
+    .slice(1, 5)
+
+  console.log(relatedProjects)
 
   const timeStamp = `( 0${new Date(publishedAt || Date.now()).getMonth() +
     1} / ${new Date(publishedAt || Date.now()).getFullYear()} )`
@@ -74,7 +105,6 @@ const project = ({ data }: any) => {
         </div>
         <div className={styles.title}>
           <p>{title}</p>
-          <p>{timeStamp}</p>
         </div>
         <div className={styles.projectDescription}>
           <p>{_rawDescription && _rawDescription[0].children[0].text}</p>
@@ -85,6 +115,31 @@ const project = ({ data }: any) => {
           {data.allSanityStills.nodes.map((item: any, index: number) => (
             <div className={styles.projectStillsImageContainer}>
               <Img fluid={item.image.asset.fluid} alt={item.id} />
+            </div>
+          ))}
+        </div>
+        <div className={styles.relatedProjectsContainer}>
+          {relatedProjects.map((project: any) => (
+            <div>
+              <Link to={project.slug.current}>
+                <div className={styles.playerWrapper}>
+                  <ReactPlayer
+                    url={project.vimeoSrc}
+                    className={styles.reactPlayer}
+                    // playing={isPlaying && isLoaded}
+                    controls={false}
+                    width='100%'
+                    height='100%'
+                    // onReady={() => {
+                    //   setIsLoaded(true)
+                    // }}
+                    volume={0}
+                    muted
+                    preload
+                  />
+                </div>
+                <p>{project.title}</p>
+              </Link>
             </div>
           ))}
         </div>

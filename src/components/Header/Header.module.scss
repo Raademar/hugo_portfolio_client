@@ -1,72 +1,85 @@
 @import '../../styles/colors';
 @import '../../styles/mixins';
+@import '../../styles/constants';
 
 .header {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	margin: 10px 0;
-	z-index: 2;
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 0 24px;
-	& > div:first-of-type {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-gap: 20px;
-	}
-	a {
-		color: $white;
-		text-decoration: none;
-	}
-	.navMenu {
-		nav {
-			display: flex;
-			justify-content: space-between;
-			a {
-				white-space: pre;
-			}
-		}
-	}
-	.listItem {
-		@include respond-to('medium') {
-			font-size: 14px;
-		}
-		@include respond-to('small') {
-			font-size: 12px;
-		}
-		font-size: 16px;
-		font-weight: 400;
-		letter-spacing: 0.03em;
-	}
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 10px 0;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 24px;
+  & > div:first-of-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  a {
+    color: $white;
+    text-decoration: none;
+    -moz-transition: all 400ms;
+    -webkit-transition: all 400ms;
+    -o-transition: all 400ms;
+    transition: all 400ms;
+    font-weight: bold;
+  }
+  a:hover {
+    -webkit-transform: skewX(-10deg);
+    -moz-transform: skewX(-10deg);
+    -o-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+  }
+  .navMenu {
+    nav {
+      display: flex;
+      justify-content: space-between;
+      a {
+        white-space: pre;
+        font-weight: bold;
+      }
+    }
+  }
+  .listItem {
+    @include respond-to('medium') {
+      font-size: 14px;
+    }
+    @include respond-to('small') {
+      font-size: 12px;
+    }
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
 }
 
 .burgerButton {
-	grid-column: 3/3;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-	background: transparent;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	z-index: 10;
-	// transition: all 0.3s $easeInQuad;
+  grid-column: 3/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  // transition: all 0.3s $easeInQuad;
 
-	&:focus {
-		outline: none;
-	}
+  &:focus {
+    outline: none;
+  }
 
-	div {
-		width: 1.7rem;
-		height: 1px;
-		background: $white;
-		border-radius: 10px;
-		transition: all 0.3s $easeInOutCirc;
-		position: relative;
-		transform-origin: 1px;
-	}
+  div {
+    width: 1.7rem;
+    height: 1px;
+    background: $white;
+    border-radius: 10px;
+    transition: all 0.3s $easeInOutCirc;
+    position: relative;
+    transform-origin: 1px;
+  }
 }

@@ -4,3 +4,6 @@ export const title: string;
 export const projectDescription: string;
 export const projectStills: string;
 export const projectStillsImageContainer: string;
+export const relatedProjectsContainer: string;
+export const playerWrapper: string;
+export const reactPlayer: string;

@@ -2,45 +2,86 @@
 @import '../styles/mixins';
 
 .projectContainer {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 20px;
-	margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  margin-top: 40px;
 }
 
 .projectImageContainer {
-	width: auto;
-	// height: 780px;
-	margin-bottom: 24px;
-	grid-column: 1/3;
+  width: auto;
+  // height: 780px;
+  margin-bottom: 24px;
+  grid-column: 1/3;
 }
 .title {
-	display: flex;
-	justify-content: space-between;
-	line-height: 25px;
-	@include respond-to('medium') {
-		grid-column: 1 / 3;
-		margin-bottom: 16px;
-	}
-	& p {
-		margin: 0;
-	}
+  display: flex;
+  justify-content: space-between;
+  line-height: 25px;
+  grid-column: 2/3;
+  @include respond-to('medium') {
+    grid-column: 1 / 3;
+    margin-bottom: 16px;
+  }
+  & p {
+    margin: 0;
+  }
 }
 .projectDescription {
-	@include respond-to('medium') {
-		grid-column: 1 / 3;
-	}
-	grid-column: 2 / 3;
-	line-height: 25px;
-	margin-bottom: 60px;
+  @include respond-to('medium') {
+    grid-column: 1 / 3;
+  }
+  grid-column: 2 / 3;
+  line-height: 25px;
+  margin-bottom: 60px;
 }
 
 .projectStills {
-	@include respond-to('medium') {
-		grid-column: 1 / 3;
-	}
-	grid-column: 2 / 3;
-	& .projectStillsImageContainer {
-		margin-bottom: 30px;
-	}
+  @include respond-to('medium') {
+    grid-column: 1 / 3;
+  }
+  grid-column: 1 / 3;
+  display: grid;
+  @include respond-to('medium') {
+    grid-template-columns: 1fr;
+  }
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  & .projectStillsImageContainer {
+    margin-bottom: 30px;
+  }
+}
+
+.relatedProjectsContainer {
+  grid-column: 1 / 3;
+  display: grid;
+  @include respond-to('medium') {
+    grid-template-columns: 1fr;
+  }
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 27px;
+  margin-bottom: 37px;
+
+  & a {
+    color: $white;
+    text-decoration: none;
+  }
+  & p {
+    font-size: 16px;
+  }
+}
+
+.playerWrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.reactPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

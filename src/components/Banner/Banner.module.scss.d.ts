@@ -4,3 +4,6 @@ export const imageGallerySvg: string;
 export const imageGalleryRightNav: string;
 export const originalClass: string;
 export const imageContainer: string;
+export const bannerProjectText: string;
+export const playerWrapper: string;
+export const reactPlayer: string;
