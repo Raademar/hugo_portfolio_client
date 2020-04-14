@@ -51,8 +51,10 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
         }}
       >
         <Link to={url}>
-          {/* {isHovered ? ( */}
           <div className={styles.playerWrapper}>
+            <div className={styles.bannerProjectText}>
+              <p className={styles.bannerProjectTextP}>{title}</p>
+            </div>
             <ReactPlayer
               url={vimeoSrc}
               className={styles.reactPlayer}
@@ -69,14 +71,11 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
               preload
             />
           </div>
-          {/* ) : (
-					 	<Img fluid={image} alt={title} ref={imageRef} />
-					 )} */}
         </Link>
       </div>
-      <div className={styles.linkContainer}>
+      {/* <div className={styles.linkContainer}>
         <h3>{title}</h3>
-      </div>
+      </div> */}
     </article>
   )
 }

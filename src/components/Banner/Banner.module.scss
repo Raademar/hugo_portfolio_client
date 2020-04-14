@@ -2,8 +2,8 @@
 @import '../../styles/mixins';
 
 .container {
-  height: 100%;
-  margin-top: 40px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
   .image-gallery-left-nav .image-gallery-svg,
   .image-gallery-right-nav .image-gallery-svg {
     height: 40px;
@@ -12,15 +12,51 @@
     height: 40px;
   }
   .imageContainer {
-    display: inline-block;
-    height: 100%;
-    width: calc(100vw - 48px);
+    display: flex;
+    height: auto;
+    width: 100vw;
   }
-  &:hover {
-    cursor: pointer;
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+  }
+}
+.bannerProjectText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    @include respond-to('medium') {
+      font-size: 18px;
+    }
+    font-size: 48px;
+    color: $white;
+    user-select: none;
   }
 }
 
 .sliderImage {
   // max-height: 700px;
+}
+
+.playerWrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.reactPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
