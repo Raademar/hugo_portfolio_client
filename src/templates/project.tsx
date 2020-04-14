@@ -76,7 +76,7 @@ const project = ({ data }: any) => {
   const relatedProjects = data.allSanityProject.nodes
     .map((project: any) =>
       project.categories.map((projectCategory: any) => {
-        if (projectCategory.title === categories[0].title) {
+        if (projectCategory.title === categories[0]?.title) {
           return project
         }
       })

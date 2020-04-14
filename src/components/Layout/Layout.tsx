@@ -9,16 +9,16 @@ export const Layout = ({ children }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [slide, setSlide] = useState('0px')
   const [lastScrollY, setLastScrollY] = useState(0)
-  const currentScrollY = window.scrollY
+  // const currentScrollY = window.scrollY
 
-  useEffect(() => {
-    if (currentScrollY > lastScrollY) {
-      setSlide('-48px')
-    } else {
-      setSlide('0px')
-    }
-    setLastScrollY(currentScrollY)
-  }, [window.scrollY])
+  // useEffect(() => {
+  //   if (currentScrollY > lastScrollY) {
+  //     setSlide('-48px')
+  //   } else {
+  //     setSlide('0px')
+  //   }
+  //   setLastScrollY(currentScrollY)
+  // }, [window.scrollY])
   return (
     <StaticQuery
       query={graphql`
