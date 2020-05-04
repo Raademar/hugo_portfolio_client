@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export function move(array: any[], from: number, to: number) {
   if (to === from) return array
@@ -74,7 +74,7 @@ export function useWindowSize() {
   function getSize() {
     return {
       width: isClient ? window.innerWidth : 0,
-      height: isClient ? window.innerHeight : 0
+      height: isClient ? window.innerHeight : 0,
     }
   }
   const [windowSize, setWindowSize] = useState(getSize)

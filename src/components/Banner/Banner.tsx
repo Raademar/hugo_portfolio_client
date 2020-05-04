@@ -23,6 +23,17 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
         title
         vimeoURL
       }
+      allSanityStills(filter: { title: { eq: "dua lipa 1" } }) {
+        nodes {
+          image {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+      }
     }
   `)
   // const imageRef = useRef(null)
@@ -47,15 +58,30 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
   //   // adaptiveHeight: true,
   // }
   const { title, vimeoURL } = data.sanityBannerVideo
-
-  console.log(title, vimeoURL)
+  const { fluid } = data.allSanityStills.nodes[0].image.asset
 
   return (
     <div className={styles.container}>
       <div className={styles.playerWrapper}>
         <div className={styles.bannerProjectText}>
-          <h1>{title}</h1>
+          <h1
+            className={isLoaded ? 'bannerProjectTextP bannerProjectText' : ''}
+            style={{ opacity: isLoaded ? 0 : 1 }}
+          >
+            {title}
+          </h1>
         </div>
+        {!isLoaded && (
+          <Img
+            fluid={fluid}
+            style={{
+              position: 'absolute',
+              top: '-50px',
+              width: '100%',
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            }}
+          />
+        )}
         <ReactPlayer
           url={vimeoURL}
           className={styles.reactPlayer}

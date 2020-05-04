@@ -16,6 +16,7 @@ export const ProjectsContainer = (props: any) => {
           }
           featuredProject
           _rawDescription
+          publishedAt
           vimeoSrc
           image {
             asset {
@@ -39,9 +40,13 @@ export const ProjectsContainer = (props: any) => {
     }
   }
 
-  const sortedArr = zip(falsyValues.reverse(), truthyValues).filter(
-    (item: any) => item !== undefined
-  )
+  const sortedArr = zip(
+    falsyValues.sort(
+      (a: any, b: any) =>
+        new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime()
+    ),
+    truthyValues
+  ).filter((item: any) => item !== undefined)
 
   console.log(sortedArr)
 

@@ -37,13 +37,15 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
     return { source: item.image.asset.fluid.src, index }
   })
 
+  console.log(images)
+
   const flickityOptions = {
     initialIndex: images.length,
     prevNextButtons: true,
     pageDots: false,
     wrapAround: true,
     cellAlign: 'center',
-    autoPlay: true
+    autoPlay: true,
     // adaptiveHeight: true,
   }
 

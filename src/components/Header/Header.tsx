@@ -35,7 +35,8 @@ export const Header = ({
   siteTitle,
   setIsMenuOpen,
   isMenuOpen,
-  style
+  style,
+  sticky,
 }: any) => {
   const categories =
     menuItems &&
@@ -66,13 +67,13 @@ export const Header = ({
           <button className={styles.burgerButton} onClick={setIsMenuOpen}>
             <div
               style={{
-                transform: isMenuOpen ? 'translateY(1px)' : 'translateY(-4px)'
+                transform: isMenuOpen ? 'translateY(1px)' : 'translateY(-4px)',
               }}
             />
             <div />
             <div
               style={{
-                transform: isMenuOpen ? 'translateY(-1px)' : 'translateY(4px)'
+                transform: isMenuOpen ? 'translateY(-1px)' : 'translateY(4px)',
               }}
             />
           </button>
