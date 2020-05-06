@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Helmet from 'react-helmet'
+import React, { useState } from 'react'
 import Headroom from 'react-headroom'
+import Helmet from 'react-helmet'
 import { Header } from '../Header/Header'
 import { Menu } from '../Menu/Menu'
 import styles from './Layout.module.scss'
 
 export const Layout = ({ children }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [slide, setSlide] = useState('0px')
-  const [lastScrollY, setLastScrollY] = useState(0)
 
   return (
     <StaticQuery

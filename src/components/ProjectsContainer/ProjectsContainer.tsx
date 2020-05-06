@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { zip } from '../../helpers/helpers'
 import { ProjectPreview } from '../ProjectPreview/ProjectPreview'
 import styles from './ProjectsContainer.module.scss'
-import { sortImageGrid, zip } from '../../helpers/helpers'
 
 export const ProjectsContainer = (props: any) => {
   const data = useStaticQuery(graphql`

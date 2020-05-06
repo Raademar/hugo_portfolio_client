@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link as GatsbyLink, graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
+import React from 'react'
 import styles from './Menu.module.scss'
 
 export const query = graphql`
@@ -98,6 +98,7 @@ export const Menu = ({ menuItems, isMenuOpen }: any) => {
                   className={`${styles.listItem} ${styles.centerListItem}`}
                   href={item.url}
                   target='_blank'
+                  key={index}
                 >
                   {item.title}
                 </a>

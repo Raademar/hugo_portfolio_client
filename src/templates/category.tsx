@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
+import React, { FunctionComponent } from 'react'
 import { Layout } from '../components/Layout/Layout'
 import { ProjectPreview } from '../components/ProjectPreview/ProjectPreview'
 import styles from './Category.module.scss'

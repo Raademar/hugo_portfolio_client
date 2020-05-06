@@ -1,11 +1,9 @@
-import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
-import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import ImageGallery from 'react-image-gallery'
-import Flickity from 'react-flickity-component'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
-import styles from './Banner.module.scss'
 import { useWindowSize } from '../../helpers/helpers'
+import styles from './Banner.module.scss'
 
 type Props = {
   history?: any
@@ -36,27 +34,9 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
       }
     }
   `)
-  // const imageRef = useRef(null)
-  // const bannerProjects = data.allSanityProject.nodes
-  //   .filter((node: any) => node.featuredProject)
-  //   .map((item: any, index: number) => {
-  //     return {
-  //       original: item.image.asset.fluid.src,
-  //       url: item.slug && item.slug.current,
-  //       index
-  //     }
-  //   })
   const size = useWindowSize()
   const IS_MOBILE = size && size.width < 767
 
-  // const flickityOptions = {
-  //   initialIndex: bannerProjects.length,
-  //   prevNextButtons: false,
-  //   pageDots: false,
-  //   wrapAround: true,
-  //   cellAlign: 'center'
-  //   // adaptiveHeight: true,
-  // }
   const { title, vimeoURL } = data.sanityBannerVideo
   const { fluid } = data.allSanityStills.nodes[0].image.asset
 
@@ -76,9 +56,10 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
             fluid={fluid}
             style={{
               position: 'absolute',
-              top: '-50px',
+              top: 0,
               width: '100%',
               backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              // zIndex: 1,
             }}
           />
         )}
@@ -95,7 +76,6 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
           }}
           volume={0}
           muted
-          preload
         />
       </div>
     </div>

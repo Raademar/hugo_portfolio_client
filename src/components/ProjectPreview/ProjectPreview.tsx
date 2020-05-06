@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
-import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import { Link } from 'gatsby'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
-import Img from 'gatsby-image'
 import styles from './ProjectPreview.module.scss'
 
 type Props = {
@@ -15,7 +14,7 @@ type Props = {
   gridRow?: number
 }
 
-export const ProjectPreview: FunctionComponent<Props> = props => {
+export const ProjectPreview: FunctionComponent<Props> = (props) => {
   const {
     featuredProject,
     image,
@@ -24,7 +23,7 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
     left,
     right,
     gridRow,
-    vimeoSrc
+    vimeoSrc,
   } = props
   const [isHovered, setIsHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -68,7 +67,6 @@ export const ProjectPreview: FunctionComponent<Props> = props => {
               }}
               volume={0}
               muted
-              preload
             />
           </div>
         </Link>

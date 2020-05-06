@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
-import { Layout } from '../components/Layout/Layout'
+import React, { FunctionComponent } from 'react'
 import { Banner } from '../components/Banner/Banner'
-import { TextBox } from '../components/TextBox/TextBox'
+import { Layout } from '../components/Layout/Layout'
 import { ProjectsContainer } from '../components/ProjectsContainer/ProjectsContainer'
+import { TextBox } from '../components/TextBox/TextBox'
 
 type Props = {
   props: any
