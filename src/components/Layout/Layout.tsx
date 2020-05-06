@@ -39,16 +39,12 @@ export const Layout = ({ children }: any) => {
               { name: 'keywords', content: 'Film Director, Cinematographer' },
             ]}
           ></Helmet>
-          <Headroom>
+          <Headroom disableInlineStyles>
             <Header
               menuItems={data.allSanityMenuItem}
               siteTitle={data.site.siteMetadata.title}
               isMenuOpen={isMenuOpen}
               setIsMenuOpen={() => setIsMenuOpen(!isMenuOpen)}
-              // style={{
-              //   transform: `translate(0, ${slide})`,
-              //   transition: `transform 100ms cubic-bezier(0.075, 0.82, 0.165, 1)`,
-              // }}
             />
           </Headroom>
           <Menu menuItems={data.allSanityMenuItem} isMenuOpen={isMenuOpen} />
