@@ -3,7 +3,10 @@
 
 .container {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  // background-color: rgba(0, 0, 0, 0.4);
   .image-gallery-left-nav .image-gallery-svg,
   .image-gallery-right-nav .image-gallery-svg {
     height: 40px;
@@ -34,6 +37,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
   h1 {
     @include respond-to('medium') {
@@ -42,6 +46,14 @@
     font-size: 48px;
     color: $white;
     user-select: none;
+    -webkit-transform: skewX(-10deg);
+    -moz-transform: skewX(-10deg);
+    -o-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+    -moz-transition: all 400ms;
+    -webkit-transition: all 400ms;
+    -o-transition: all 400ms;
+    transition: transform 400ms, opacity 400ms 0.4s;
   }
 }
 

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
-import styles from './Lightbox.module.scss'
-import { ChevronRight, ChevronLeft } from 'react-feather'
+import React, { useRef, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'react-feather'
 import { useOutsideClick } from '../../helpers/helpers'
+import styles from './Lightbox.module.scss'
 
 type Props = {
   images: { source: string; index: number }[]
@@ -14,7 +14,7 @@ export const Lightbox = ({
   images,
   onClose,
   startImage,
-  clickOutsideImage
+  clickOutsideImage,
 }: Props) => {
   const [activeImage, setActiveImage] = useState(images[startImage])
   const [currentKeyDown, setCurrentKeyDown] = useState(0)

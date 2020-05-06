@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export function move(array: any[], from: number, to: number) {
   if (to === from) return array
@@ -14,14 +14,11 @@ export function move(array: any[], from: number, to: number) {
 }
 
 export const sortImageGrid = (arr: any[]): any[] => {
-  // console.log(arr)
-
   const sortedArr: any[] = []
   arr.map((item, index) => {
     if (item === undefined) {
       return
     }
-    // console.log(item)
     if (index === 0) {
       sortedArr.push(item)
     } else if (index === 1 && item.featuredProject) {
@@ -74,7 +71,7 @@ export function useWindowSize() {
   function getSize() {
     return {
       width: isClient ? window.innerWidth : 0,
-      height: isClient ? window.innerHeight : 0
+      height: isClient ? window.innerHeight : 0,
     }
   }
   const [windowSize, setWindowSize] = useState(getSize)

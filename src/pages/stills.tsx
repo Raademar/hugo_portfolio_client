@@ -1,11 +1,9 @@
-import React, { FunctionComponent, useState, useRef } from 'react'
 import { graphql } from 'gatsby'
-import { Layout } from '../components/Layout/Layout'
-import { TextBox } from '../components/TextBox/TextBox'
-import { Lightbox } from '../components/Lightbox/Lightbox'
-import Flickity from 'react-flickity-component'
-import styles from '../styles/pages/stills.module.scss'
 import Img from 'gatsby-image'
+import React, { FunctionComponent, useState } from 'react'
+import { Layout } from '../components/Layout/Layout'
+import { Lightbox } from '../components/Lightbox/Lightbox'
+import styles from '../styles/pages/stills.module.scss'
 
 type Props = {
   props: any
@@ -32,20 +30,9 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
   const [stillsImage, setStillsImage] = useState(0)
 
   const { nodes } = data.allSanityStills
-
   const images = nodes.map((item: any, index: number) => {
     return { source: item.image.asset.fluid.src, index }
   })
-
-  const flickityOptions = {
-    initialIndex: images.length,
-    prevNextButtons: true,
-    pageDots: false,
-    wrapAround: true,
-    cellAlign: 'center',
-    autoPlay: true
-    // adaptiveHeight: true,
-  }
 
   return (
     <>
@@ -56,16 +43,6 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
           onClose={() => setModalIsOpen(false)}
           clickOutsideImage={() => setModalIsOpen(false)}
         />
-        // TODO: Implement Flickity as stills viewer
-        // <Flickity
-        //   className={'carousel'}
-        //   elementType={'div'}
-        //   options={flickityOptions}
-        // >
-        //   {images.map((image: any, index: number) => {
-        //     return <img src={image.source} key={index} />
-        //   })}
-        // </Flickity>
       )}
       <Layout>
         <div
@@ -74,11 +51,23 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
             setModalIsOpen(true)
           }}
         >
-          {nodes.map((item: any, index: number) => (
-            <div key={index} onClick={() => setStillsImage(index)}>
-              <Img fluid={item.image.asset.fluid} />
+          {nodes.length > 0 ? (
+            nodes.map((item: any, index: number) => (
+              <div key={index} onClick={() => setStillsImage(index)}>
+                <Img fluid={item.image.asset.fluid} />
+              </div>
+            ))
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                gridColumn: '1 / -1',
+                justifyContent: 'center',
+              }}
+            >
+              <h3>Something went wrong when we tried to get the images...</h3>
             </div>
-          ))}
+          )}
         </div>
       </Layout>
     </>

@@ -1,11 +1,11 @@
-import React from 'react'
+import 'array-flat-polyfill'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import React from 'react'
+import ReactPlayer from 'react-player'
 import { Layout } from '../components/Layout/Layout'
 import { Video } from '../components/Video/Video'
-import ReactPlayer from 'react-player'
 import styles from './Project.module.scss'
-import 'array-flat-polyfill'
 
 export const query = graphql`
   query($slug: String) {
@@ -71,7 +71,7 @@ const project = ({ data }: any) => {
     categories,
     publishedAt,
     vimeoSrc,
-    vimeoSrcPlayer
+    vimeoSrcPlayer,
   } = data.sanityProject
 
   const relatedProjects = data.allSanityProject.nodes
@@ -117,23 +117,18 @@ const project = ({ data }: any) => {
           ))}
         </div>
         <div className={styles.relatedProjectsContainer}>
-          {randomSelectedRelatedProjects.map((project: any) => (
-            <div>
+          {randomSelectedRelatedProjects.map((project: any, index: number) => (
+            <div key={index}>
               <Link to={project.slug.current}>
                 <div className={styles.playerWrapper}>
                   <ReactPlayer
                     url={project.vimeoSrc}
                     className={styles.reactPlayer}
-                    // playing={isPlaying && isLoaded}
                     controls={false}
                     width='100%'
                     height='100%'
-                    // onReady={() => {
-                    //   setIsLoaded(true)
-                    // }}
                     volume={0}
                     muted
-                    preload
                   />
                 </div>
                 <p>{project.title}</p>
