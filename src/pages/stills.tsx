@@ -1,9 +1,14 @@
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useRef } from 'react'
 import { Layout } from '../components/Layout/Layout'
 import { Lightbox } from '../components/Lightbox/Lightbox'
 import styles from '../styles/pages/stills.module.scss'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 type Props = {
   props: any
@@ -33,7 +38,17 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
   const images = nodes.map((item: any, index: number) => {
     return { source: item.image.asset.fluid.src, index }
   })
+  // const nodes: any[] = []
 
+  const fromTop = window.pageYOffset
+  const targetRef = useRef()
+
+  if (modalIsOpen && targetRef != null) {
+    //@ts-ignore
+    disableBodyScroll(targetRef.current)
+  } else {
+    clearAllBodyScrollLocks()
+  }
   return (
     <>
       {modalIsOpen && (
@@ -42,6 +57,8 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
           startImage={stillsImage}
           onClose={() => setModalIsOpen(false)}
           clickOutsideImage={() => setModalIsOpen(false)}
+          style={{ top: `${fromTop}px` }}
+          ref={targetRef}
         />
       )}
       <Layout>

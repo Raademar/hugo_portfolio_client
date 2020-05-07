@@ -8,6 +8,8 @@ type Props = {
   onClose: () => void
   startImage: any
   clickOutsideImage: () => void
+  style?: any
+  ref: any
 }
 
 export const Lightbox = ({
@@ -15,6 +17,7 @@ export const Lightbox = ({
   onClose,
   startImage,
   clickOutsideImage,
+  style,
 }: Props) => {
   const [activeImage, setActiveImage] = useState(images[startImage])
   const [currentKeyDown, setCurrentKeyDown] = useState(0)
@@ -55,7 +58,7 @@ export const Lightbox = ({
   useOutsideClick([image, nextImage, previousImage], () => clickOutsideImage())
 
   return (
-    <div className={styles.lightboxContainer}>
+    <div className={styles.lightboxContainer} style={style}>
       <div className={styles.lightboxContainerInner}>
         <span className={styles.close} onClick={onClose}>
           CLOSE
