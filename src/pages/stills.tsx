@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import React, { FunctionComponent, useState, useRef } from 'react'
+import { window, document, exists } from 'browser-monads'
 import { Layout } from '../components/Layout/Layout'
 import { Lightbox } from '../components/Lightbox/Lightbox'
 import styles from '../styles/pages/stills.module.scss'
