@@ -4,7 +4,6 @@
 
 .lightboxContainer {
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -52,4 +51,12 @@
   left: 40px;
   cursor: pointer;
   user-select: none;
+}
+
+.imageHolder {
+  display: flex;
+  align-items: flex-start;
+  & img {
+    width: 100%;
+  }
 }
