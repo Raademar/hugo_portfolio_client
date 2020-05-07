@@ -52,3 +52,11 @@
   cursor: pointer;
   user-select: none;
 }
+
+.imageHolder {
+  display: flex;
+  align-items: flex-start;
+  & img {
+    width: 100%;
+  }
+}

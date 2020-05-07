@@ -77,7 +77,9 @@ export const Lightbox = ({
         >
           <ChevronLeft />
         </span>
-        <img src={activeImage.source} ref={image} />
+        <div className={styles.imageHolder}>
+          <img src={activeImage.source} ref={image} />
+        </div>
       </div>
     </div>
   )
