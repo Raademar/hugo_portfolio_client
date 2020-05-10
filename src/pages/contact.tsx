@@ -20,7 +20,6 @@ export const query = graphql`
 
 const Contact: FunctionComponent<Props> = ({ data }: any) => {
   const { _rawContactText, email, phone } = data.sanityContactPage
-  console.log(_rawContactText)
 
   return (
     <>
@@ -36,7 +35,16 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
               </a>
             </div>
             <div className={styles.devLinks}>
-              <p>Made by Mattias & Benjamin</p>
+              <p>
+                Made by{' '}
+                <a target='_blank' href='https://github.com/raademar'>
+                  Mattias
+                </a>{' '}
+                &{' '}
+                <a target='_blank' href='https://www.vevang.se/'>
+                  Benjamin
+                </a>
+              </p>
             </div>
           </section>
         </div>

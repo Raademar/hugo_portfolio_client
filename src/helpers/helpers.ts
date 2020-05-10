@@ -39,7 +39,6 @@ export const sortImageGrid = (arr: any[]): any[] => {
     } else {
       sortedArr.push(item)
     }
-    console.log(sortedArr)
   })
   if (sortedArr.length === arr.length) {
     return sortedArr

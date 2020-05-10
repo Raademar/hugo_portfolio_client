@@ -2,8 +2,13 @@
 @import '../../styles/mixins';
 
 .wrapper {
-	@include respond-to('medium') {
-		padding: 0 16px;
-	}
-	padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  justify-content: space-between;
+  min-height: 100vh;
+  @include respond-to('medium') {
+    padding: 0 16px;
+  }
+  padding: 0 24px;
 }

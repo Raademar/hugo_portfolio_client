@@ -48,8 +48,6 @@ export const ProjectsContainer = (props: any) => {
     truthyValues
   ).filter((item: any) => item !== undefined)
 
-  console.log(sortedArr)
-
   return (
     <section className={styles.container}>
       {sortedArr.length > 0 &&
