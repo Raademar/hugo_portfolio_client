@@ -1,58 +1,59 @@
-@import '../colors';
-@import '../mixins';
+@import "../colors";
+@import "../mixins";
 
 .contactContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 40px;
-  grid-gap: 20px;
-  & section {
-    @include respond-to('medium') {
-      grid-column: 1 / 3;
-    }
-    grid-column: 1 / 3;
-  }
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-top: 40px;
+	grid-gap: 20px;
+	& section {
+		@include respond-to("medium") {
+			grid-column: 1 / 3;
+		}
+		grid-column: 1 / 3;
+	}
 }
 
 .contactInfoContainer {
-  @include respond-to('medium') {
-    position: absolute;
-    bottom: 18px;
-    display: block;
-    left: unset;
-    right: unset;
-  }
-  grid-column: 1 / 3;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 18px;
-  left: 24px;
-  right: 24px;
-  // width: 100%;
+	@include respond-to("medium") {
+		position: absolute;
+		bottom: 18px;
+		display: block;
+		left: unset;
+		right: unset;
+	}
+	grid-column: 1 / 3;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	bottom: 18px;
+	left: 24px;
+	right: 24px;
+	// width: 100%;
 
-  & .emailPhoneInsta {
-    @include respond-to('medium') {
-      display: block;
-      margin-bottom: 16px;
-    }
-    display: flex;
-    & p,
-    a:not(:last-of-type) {
-      margin-right: 150px;
-    }
-  }
+	& .emailPhoneInsta {
+		@include respond-to("medium") {
+			display: block;
+			margin-bottom: 16px;
+		}
+		display: flex;
+		align-items: center;
+		& p,
+		a:not(:last-of-type) {
+			margin-right: 150px;
+		}
+	}
 
-  & .devLinks {
-    display: flex;
-  }
-  p {
-    font-size: 18px;
-    margin-bottom: 0;
-  }
-  a {
-    color: $white;
-    font-size: 18px;
-    text-decoration: none;
-  }
+	& .devLinks {
+		display: flex;
+	}
+	p {
+		font-size: 18px;
+		margin-bottom: 0;
+	}
+	a {
+		color: $white;
+		font-size: 18px;
+		text-decoration: none;
+	}
 }
