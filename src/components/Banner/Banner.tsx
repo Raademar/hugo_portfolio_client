@@ -19,15 +19,11 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
     query {
       sanityBannerVideo {
         title
-        vimeoURL
-      }
-      allSanityStills(filter: { title: { eq: "dua lipa 1" } }) {
-        nodes {
-          image {
-            asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+        vimeoURL,
+        loadingImage {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
             }
           }
         }
@@ -37,8 +33,7 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
   const size = useWindowSize()
   const IS_MOBILE = size && size.width < 767
 
-  const { title, vimeoURL } = data.sanityBannerVideo
-  const { fluid } = data.allSanityStills.nodes[0].image.asset
+  const { title, vimeoURL, loadingImage } = data.sanityBannerVideo
 
   return (
     <div className={styles.container}>
@@ -53,7 +48,7 @@ export const Banner: FunctionComponent<Props> = (props: Props) => {
         </div>
         {!isLoaded && (
           <Img
-            fluid={fluid}
+            fluid={loadingImage.asset.fluid}
             style={{
               position: 'absolute',
               top: 0,
