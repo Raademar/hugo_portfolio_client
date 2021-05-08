@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 import { useOutsideClick } from '../../helpers/helpers'
 import styles from './Lightbox.module.scss'
+import { FluidObject } from 'gatsby-image'
 
 type Props = {
-  images: { source: string; index: number }[]
+  images: { source: FluidObject, index: number }[]
   onClose: () => void
   startImage: any
   clickOutsideImage: () => void
@@ -78,7 +79,7 @@ export const Lightbox = ({
           <ChevronLeft />
         </span>
         <div className={styles.imageHolder}>
-          <img src={activeImage.source} ref={image} />
+          <img src={activeImage.source.src} ref={image} />
         </div>
       </div>
     </div>

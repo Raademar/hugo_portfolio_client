@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import React, { FunctionComponent, useState, useRef } from 'react'
-import { window, document, exists } from 'browser-monads'
+import { window } from 'browser-monads'
 import { Layout } from '../components/Layout/Layout'
 import { Lightbox } from '../components/Lightbox/Lightbox'
 import styles from '../styles/pages/stills.module.scss'
@@ -26,6 +26,9 @@ export const query = graphql`
             }
           }
         }
+        belongsTo {
+          title
+        }
       }
     }
   }
@@ -36,9 +39,12 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
   const [stillsImage, setStillsImage] = useState(0)
 
   const { nodes } = data.allSanityStills
-  const images = nodes.map((item: any, index: number) => {
-    return { source: item.image.asset.fluid.src, index }
+  const images = nodes.filter((filterItem: any) => filterItem.belongsTo.length === 0).map((item: any, index: number) => {
+    return { source: item.image.asset.fluid, index }
   })
+  console.log('nodes', nodes);
+  console.log('images', images);
+
   // const nodes: any[] = []
 
   const fromTop = window.pageYOffset
@@ -69,10 +75,10 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
             setModalIsOpen(true)
           }}
         >
-          {nodes.length > 0 ? (
-            nodes.map((item: any, index: number) => (
+          {images.length > 0 ? (
+            images.map((item: any, index: number) => (
               <div key={index} onClick={() => setStillsImage(index)}>
-                <Img fluid={item.image.asset.fluid} />
+                <Img fluid={item.source} key={index} />
               </div>
             ))
           ) : (
@@ -83,7 +89,7 @@ const Contact: FunctionComponent<Props> = ({ data }: any) => {
                 justifyContent: 'center',
               }}
             >
-              <h3>Something went wrong when we tried to get the images...</h3>
+              <h3>No stills posted yet.</h3>
             </div>
           )}
         </div>
