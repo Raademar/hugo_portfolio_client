@@ -39,7 +39,7 @@
     "gatsby-source-sanity": "^6.0.4",
     "gatsby-source-sanity-transform-images": "0.0.4",
     "gatsby-transformer-sharp": "^2.3.13",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-feather": "^2.0.3",
