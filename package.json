@@ -28,7 +28,7 @@
     "css-loader": "^1.0.1",
     "dotenv": "^8.2.0",
     "flickity": "^2.2.1",
-    "gatsby": "^2.17.11",
+    "gatsby": "^2.32.13",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-sass": "^2.1.26",
